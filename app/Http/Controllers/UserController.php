@@ -14,7 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+        return view('users.index')->with('users',$users);
     }
 
     /**
@@ -24,7 +25,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        // 
     }
 
     /**
@@ -81,7 +82,10 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        $user = User::find($user);
+
+        return view('users.edit')
+            ->with('users', $user);
     }
 
     /**
@@ -93,7 +97,33 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $reglas = [
+            'adress' => 'required',
+            'location' => 'required',
+            'stade' => 'required',
+            'zipcode' => 'required',
+            'country' => 'required',
+            'avatar' => 'required',
+            'role' => 'required'
+        ];
+
+        $mensajes = [
+            'required' => 'el campo :attribute es obligatorio'
+        ];
+        $this->validate($request, $reglas, $mensajes);
+        
+        $users = User::find($user);
+
+         $users->adress = $request->input('adress') !== $users->adress ? $request->input('adress') : $users->adress;
+         $users->location = $request->input('location') !== $users->location ? $request->input('location') : $users->location;
+         $users->stade = $request->input('stade') !== $users->stade ? $request->input('stade') : $users->stade;
+         $users->country = $request->input('country') !== $users->country ? $request->input('country') : $users->country;
+         $users->zipcode = $request->input('zipcode') !== $users->zipcode ? $request->input('zipcode') : $users->zipcode;
+         $users->avatar = $request->input('avatar') !== $users->avatar ? $request->input('avatar') : $users->avatar;
+
+         $users->save();
+
+         return redirect("/perfil/");
     }
 
     /**
@@ -104,6 +134,8 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $userBorrar = User::find($user);
+        $userBorrar->delete();
+        return redirect('/perfilAdm');
     }
 }

@@ -1,7 +1,7 @@
 .carrito {
   position: inline-block;
   padding: 5px;
-  margin: 30px ;
+  margin: 70px 15px 30px 15px;
   text-align: center;
   background: #F4F2F4;
   border-radius: 2px;
@@ -19,7 +19,7 @@
   box-shadow: 0 8px 6px -6px #555;
   transition: transform 1s;
 }
-.carrito.bar span {
+.bar span {
   width: 20%;
   opacity: 0.5;
   display: inline-block;
@@ -28,7 +28,7 @@
   margin: 15px 0;
   transition: opacity 1s;
 }
-.carrito.bar span.one {
+.bar span.one {
   background-color: #5C96BC;
 }
 .carrito.bar span.two {
@@ -61,11 +61,11 @@
 .table > tfoot > tr > td {
 vertical-align: middle;
 }
-/* 
+
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
   vertical-align: middle;
-} */
+}
 
 @media screen and (max-width: 600px) {
   table#cart tbody td .form-control {

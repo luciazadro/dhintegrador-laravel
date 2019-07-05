@@ -1,67 +1,50 @@
 @extends('layouts.master')
+@include('partials.navbar')
 @section('content')
 @include('partials.head_perfil')
 <body>
 <br>
 <br>
 <br>
-<div class=container col 12>
-    <div class="profile col-4">
+<div class="container2 col-12" >
+    <div class="profileadm col-6">
         <div>
-            <img width="40px" style="border-radius:50%" src="{{asset('storage/avatars/'.Auth::User()->avatar)}}" alt="">
+            <img width="40px" style="border-radius:50%" src="{{asset('storage/avatars/'.Auth::user()->avatar)}}" alt="">
         </div>
             <h1>Bienvenido/a:
               <br>
-            {{Auth::user()->namme}} {{Auth::user()->lastname}}
+            {{Auth::user()->name}} {{Auth::user()->lastname}}
             <br>
-            <button type="button" class="btn btn-danger"> <a href={{}}>Logout </a> </button>
+            <button type="button" class="btn btn-danger"> <a href={{ route('logout') }}>Logout </a> </button>
             </h1>
             <div class="bar">
                 <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
             </div>
-                <h2> {{$user->email}}  </h2>
-            </div>
+                <h2> {{Auth::user()->email}}  </h2>
             <div class="bar">
                 <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
             </div>
-        <div class='carrito col-10'>
-        <form action="" method="POST">
-            <img src="img/Logo_aurora.png" alt="Logo de Aurora Materiales
-            ">
-            <h1>Actualiza tus Datos
+    </div>
+    <div class='profileadm col-6'>
+            <img src="img/Logo_aurora.png" alt="Logo de Aurora Materiales">
+            <h1>Agregar Productos</h1>
             <div class="bar">
                 <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
             </div>
             <div>
-            {{-- <?php include_once('Users_Folder/modify_Users.php'); ?> --}}
-            <div class="bar">
-                <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
+
             </div>
-            <div class="form-group">
-                <label for="fotoperfil" class="control-label">Foto de Perfil</label>
-                 <br>
-               <input  type="file" name="avatar" value=""/>
-            </div>
-            <button type="submit" class="btn btn-danger"> Actualizar </button>
-            </h1>
-            </form>
-        </div>
+            <button type="button" href="/producto/create" class="btn btn-danger"> Nuevo Producto </button>
     </div>
-    <div class=container2 col 12>
-        <div class='carrito col-6'>
-            <img src="img/Logo_aurora.png" alt="Logo de Aurora Materiales
-            ">
+    <div class='profileadm col-6'>
+            <img src="img/Logo_aurora.png" alt="Logo de Aurora Materiales">
             <h1>Listado de Usuarios en Base de Datos
             <div class="bar">
                 <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
             </div>
-            <div>
-            {{-- <?php include_once('Users_Folder/list_Users.php'); ?> --}}
-            </div>
-        </div>
+            <button type="button" class="btn btn-danger"> <a href="/users/index">Listado de Usuarios </a> </button>
     </div>
-        <div class=container3 col 12>
-        <div class='carrito col-6'>
+    <div class='profileadm col-6'>
         <form action="" method="POST">
             <img src="img/Logo_aurora.png" alt="Logo de Aurora Materiales
             ">
@@ -70,10 +53,8 @@
                 <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
             </div>
             </form>
-        </div>
-        </div>
-        <div class=container4 col 12>
-        <div class='carrito col-6'>
+    </div>
+    <div class='profileadm col-6'>
         <form action="" method="POST">
             <img src="img/Logo_aurora.png" alt="Logo de Aurora Materiales
             ">
@@ -82,9 +63,6 @@
                 <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
             </div>
             </form>
-        </div>
-        </div>
-    <div> 
-    <?php include_once('components/footer.php'); ?>
     </div>
-    </body>
+</div> 
+</body>

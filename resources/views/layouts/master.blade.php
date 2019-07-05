@@ -1,3 +1,3 @@
-@include('partials.head_login')
+@include('partials.head_perfil')
 @yield('content')
 @include('partials.footer')

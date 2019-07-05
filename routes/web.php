@@ -21,19 +21,14 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/about', 'HomeController@about');
-Route::get('/contact', 'HomeController@contact');
+Route::get('/formulario', 'HomeController@contact');
 Route::post('/contact', 'HomeController@store');
 Route::get('/perfil', 'HomeController@perfil');
-Route::get('/perfil_adm', 'HomeController@perfil');
+Route::get('/perfilAdm', 'HomeController@perfilAdm');
 
 
-// USERS
-
-Route::group(['prefix' => 'user'], function() {
-    Route::get('/profile', 'UserController@profile');
-    Route::get('/create', 'UserController@create');
-    Route::post('/create', 'UserController@store');
-    Route::get('/login', 'UserController@login');
-    Route::get('/logout', 'UserController@logout');
-});
-
+// USERS 
+Route::get('/users/index', 'UsersController@index');
+Route::get('/users/show', 'UsersController@show');
+Route::put('/users/update', 'UsersController@eupdate');
+Route::put('actualizar-usuario/{usuario}', 'UsersController@update');

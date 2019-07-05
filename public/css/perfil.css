@@ -12,6 +12,12 @@ padding: 0px;
 width: 100%;
 display: flex;
 }
+.container2{
+  margin: 50px;
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  }  
 
 .profile {
   position: inline-block;
@@ -139,6 +145,74 @@ display: flex;
   .table > tbody > tr > td,
 .table > tfoot > tr > td {
   vertical-align: middle;
+}
+
+.profileadm {
+  position: inline-block;
+  padding: 5px;
+  margin: 30px auto;
+  width: 100%;
+  min-width: 150px;
+  max-width: 300px;
+  text-align: center;
+  background: #F4F2F4;
+  border-radius: 2px;
+  display: flex;
+  flex-wrap: wrap;
+  display: inline-flex;
+  justify-content: flex-start
+
+}
+.profileadm:hover img {
+  transform: rotate(-3deg);
+}
+.profileadm:hover .bar span {
+  opacity: 1;
+}
+.profileadm img {
+  width: 100px;
+  border-radius: 90px;
+  margin-bottom: 28px;
+  box-shadow: 0 8px 6px -6px #555;
+  transition: transform 1s;
+}
+.profileadm .bar span {
+  width: 20%;
+  opacity: 0.5;
+  display: inline-block;
+  height: 5px;
+  padding: 0;
+  margin: 15px 0;
+  transition: opacity 1s;
+}
+.profileadm .bar span.one {
+  background-color: #5C96BC;
+}
+.profileadm .bar span.two {
+  background-color: #42E31B;
+}
+.profileadm .bar span.three {
+  background-color: #FEDE16;
+}
+.profileadm .bar span.four {
+  background-color: #E66504;
+}
+.profileadm .bar span.five {
+  background-color: #C60600;
+}
+.profileadm h1, .profile h2 {
+  color: #333;
+  text-rendering: optimizeLegibility;
+}
+.profileadm h1 {
+  font-family: "Sigmar One", Serif;
+  font-size: 24px;
+  line-height: 26px;
+}
+.profileadm h2 {
+  font-family: "Passion One", Serif;
+  font-size: 20px;
+  line-height: 22px;
 }
 
 @media screen and (max-width: 600px) {

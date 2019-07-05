@@ -1,6 +1,6 @@
 @extends('layouts.formulario')
 @include('partials.navbar')
-@section('content') --}}
+@section('content') 
 <div class="formulario col-6">
     <br>
     <br>

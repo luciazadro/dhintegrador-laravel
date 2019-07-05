@@ -29,7 +29,7 @@
       </a>
     @if(auth()->user() && auth()->user()->role === 9)
     <li class="nav-item">
-    <a class="nav-link" href="/perfil">Administrar</a>
+    <a class="nav-link" href="/perfilAdm">Administrar</a>
     </li>
     @endif
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
