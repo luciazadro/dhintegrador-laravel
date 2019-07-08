@@ -30,5 +30,16 @@ Route::get('/perfilAdm', 'HomeController@perfilAdm');
 // USERS 
 Route::get('/users/index', 'UsersController@index');
 Route::get('/users/show', 'UsersController@show');
+Route::get('/users/edit', 'UsersController@edit');
+Route::put('/users/edit', 'UsersController@edit');
 Route::put('/users/update', 'UsersController@eupdate');
 Route::put('actualizar-usuario/{usuario}', 'UsersController@update');
+
+// PRODUCTOS
+
+
+// CATEGORIAS
+
+// ORDERS
+Route::get('/oders/index', 'OrderController@index');
+

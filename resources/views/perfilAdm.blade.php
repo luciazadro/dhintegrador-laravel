@@ -10,12 +10,17 @@
         <div>
             <img width="40px" style="border-radius:50%" src="{{asset('storage/avatars/'.Auth::user()->avatar)}}" alt="">
         </div>
-            <h1>Bienvenido/a:
+            <h1>Bienvenido/a:</h1>
               <br>
             {{Auth::user()->name}} {{Auth::user()->lastname}}
             <br>
-            <button type="button" class="btn btn-danger"> <a href={{ route('logout') }}>Logout </a> </button>
-            </h1>
+            <button type="button" class="btn btn-danger"> <a href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+                </form>
+            </button>
             <div class="bar">
                 <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
             </div>
@@ -33,7 +38,7 @@
             <div>
 
             </div>
-            <button type="button" href="/producto/create" class="btn btn-danger"> Nuevo Producto </button>
+            <button type="button"class="btn btn-danger"><a href={{"/producto/create"}}></a> Nuevo Producto </button>
     </div>
     <div class='profileadm col-6'>
             <img src="img/Logo_aurora.png" alt="Logo de Aurora Materiales">
