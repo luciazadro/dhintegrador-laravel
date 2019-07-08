@@ -38,7 +38,7 @@
             <div>
 
             </div>
-            <button type="button"class="btn btn-danger"><a href={{"/producto/create"}}></a> Nuevo Producto </button>
+            <button type="button"class="btn btn-danger"><a href={{asset("/products.create")}}></a> Nuevo Producto </button>
     </div>
     <div class='profileadm col-6'>
             <img src="img/Logo_aurora.png" alt="Logo de Aurora Materiales">
@@ -78,6 +78,7 @@
             <div class="bar">
                 <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
             </div>
+            @include('products.index')
             </form>
     </div>
 </div> 

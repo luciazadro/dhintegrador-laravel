@@ -26,7 +26,6 @@ Route::post('/contact', 'HomeController@store');
 Route::get('/perfil', 'HomeController@perfil');
 Route::get('/perfilAdm', 'HomeController@perfilAdm');
 
-
 // USERS 
 Route::get('/users/index', 'UsersController@index');
 Route::get('/users/show', 'UsersController@show');
@@ -36,9 +35,19 @@ Route::put('/users/update', 'UsersController@eupdate');
 Route::put('actualizar-usuario/{usuario}', 'UsersController@update');
 
 // PRODUCTOS
-
+Route::get('/products', 'ProductController@index');
+Route::get('/products/create', 'ProductController@create');
+Route::post('/products/create', 'ProductController@store');
+Route::get('/products/{id}', 'ProductController@show');
+Route::get('/products/{id}/update', 'ProductController@edit');
+Route::patch('/products/{id}/update', 'ProductController@update');
 
 // CATEGORIAS
+Route::get('/categories', 'categoryController@index');
+Route::get('/categories/{id}/products', 'categoryController@showProducts');
+Route::get('/categories/{id}', 'categoryController@show');
+Route::get('/categoriescreate', 'categoryController@create');
+Route::post('/categories/create', 'categoryController@store');
 
 // ORDERS
 Route::get('/oders/index', 'OrderController@index');
