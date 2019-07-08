@@ -22,7 +22,8 @@
                         <td>{{$product->category->name}}</td>
                         <td>{{$product->stock_id}}</td>
                         <td>{{$product->price}}</td>
-                        <td>{{$product->picture}}</td>
+                        <td><img width="40px" style="border-radius:50%" src="{{asset('storage/products_img/'.Product::class()->picture)}}" alt=""></td>
+                        
                         
                             {{-- <td><a href="/users/show{{$product}}">Ver</a></td>
                             <td><a href="/users/edit{{$product->id}}">Editar</a></td>    
