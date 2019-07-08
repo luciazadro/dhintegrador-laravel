@@ -15,6 +15,8 @@ class CreateShippingsTable extends Migration
     {
         Schema::create('shippings', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->longText('method');
+            $table->bigInteger('order_id');
             $table->timestamps();
         });
     }
