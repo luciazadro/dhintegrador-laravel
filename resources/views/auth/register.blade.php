@@ -1,4 +1,4 @@
-@extends('layouts.formulario')
+@extends('layouts.master')
 @include('partials.navbar')
 @section('content') 
 <div class="formulario col-6">
