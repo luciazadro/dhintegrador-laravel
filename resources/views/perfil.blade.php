@@ -1,13 +1,11 @@
 @extends('layouts.master')
 @include('partials.navbar')
-@include('partials.head_perfil')
 @section('content')
-
 <body>
 <br>
 <br>
 <br>
-<div class=container col 12>
+<div class=container2 col 12>
     <div class="profile col-4">
         <div>
             <img width="40px" style="border-radius:50%" src="{{asset('storage/avatars/'.Auth::User()->avatar)}}" alt="">
@@ -32,7 +30,7 @@
             @csrf
             <img src="img/Logo_aurora.png" alt="Logo de Aurora Materiales
             ">
-            <h1>Actualiza tus Datos
+            <h1>Actualiza tus Datos</h1>
             <div class="bar">
                 <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
             </div>
@@ -94,11 +92,10 @@
                     <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
             </div>
             <button type="submit" class="btn btn-danger"> Actualizar </button>
-            </h1>
             </form>
     </div>
-</div>
-<div class="profile col-12">
- @include('carrito.index')
+    <div class="carrito col-12">
+        @include('carrito.index')
+    </div>
 </div>
 </body>

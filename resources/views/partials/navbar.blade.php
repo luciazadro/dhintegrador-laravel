@@ -24,30 +24,32 @@
     @endif
     @if(auth()->user())
     <li class="nav-item">
-      <a class="nav-link" href="/perfil">
-          {{ "Mi Perfil"}}
-      </a>
+      <a class="nav-link" href="/perfil">{{"Mi Perfil"}}</a>
+    @endif
     @if(auth()->user() && auth()->user()->role === 9)
     <li class="nav-item">
     <a class="nav-link" href="/perfilAdm">Administrar</a>
     </li>
     @endif
-    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-    @csrf
-    </form>
+    @if(auth()->user())
+    <li class="nav-item">
+      <a class="nav-link" href="{{ route('logout') }}"
+        onclick="event.preventDefault();
+        document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+        </form>
     </li>
     @else
     <li class="nav-link">
-      <a href="/login">Ingresar</a>
+        <a href="/login">Ingresar</a>
     </li>
     @endif
-      <li class="nav-item">
-          <a class="nav-link" href="{{ route('register') }}"
-          onclick="event.preventDefault();
-          document.getElementById('logout-form').submit();">
-          {{ __('Logout') }}
-      </a>
-      </li>
+    @if(!auth()->user())
+    <li class="nav-item">
+    <a class="nav-link" href="/register">Registrarse</a>
+    </li>
+    @endif
   </ul>
 </div>
 </nav>

@@ -48,6 +48,7 @@ class HomeController extends Controller
     }
     public function perfilAdm()
     {
-        return view('perfilAdm');
+        $users= User::all();
+        return view('perfilAdm')->with('users', $users);
     }
 }

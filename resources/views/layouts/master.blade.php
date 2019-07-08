@@ -1,3 +1,4 @@
-@include('partials.head_perfil')
+@include('partials.head')
 @yield('content')
 @include('partials.footer')
+@include('partials.scrips')

@@ -17,6 +17,7 @@ display: flex;
   padding: 10px;
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   }  
 
 .profile {
@@ -72,12 +73,12 @@ display: flex;
   text-rendering: optimizeLegibility;
 }
 .profile h1 {
-  font-family: "Sigmar One", Serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 24px;
   line-height: 26px;
 }
 .profile h2 {
-  font-family: "Passion One", Serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 20px;
   line-height: 22px;
 }
@@ -133,34 +134,32 @@ display: flex;
     text-rendering: optimizeLegibility;
   }
   .carrito h1 {
-    font-family: "Sigmar One", Serif;
+    font-family: 'Raleway', sans-serif;
     font-size: 24px;
     line-height: 26px;
   }
   .carrito h2 {
-    font-family: "Passion One", Serif;
+    font-family: 'Raleway', sans-serif;
     font-size: 20px;
     line-height: 22px;
   }
   .table > tbody > tr > td,
 .table > tfoot > tr > td {
-  vertical-align: middle;
+  vertical-align: auto;
 }
 
 .profileadm {
   position: inline-block;
   padding: 5px;
-  margin: 30px auto;
+  margin: 30px 15px 30px 15px;
   width: 100%;
   min-width: 150px;
   max-width: 300px;
   text-align: center;
   background: #F4F2F4;
   border-radius: 2px;
-  display: flex;
-  flex-wrap: wrap;
-  display: inline-flex;
-  justify-content: flex-start
+  justify-content: flex-start;
+  font-family: 'Raleway', sans-serif;
 
 }
 .profileadm:hover img {
@@ -205,12 +204,12 @@ display: flex;
   text-rendering: optimizeLegibility;
 }
 .profileadm h1 {
-  font-family: "Sigmar One", Serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 24px;
   line-height: 26px;
 }
 .profileadm h2 {
-  font-family: "Passion One", Serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 20px;
   line-height: 22px;
 }

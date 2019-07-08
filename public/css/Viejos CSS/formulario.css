@@ -1,16 +1,13 @@
-@import url(https://fonts.googleapis.com/css?family=Sigmar+One);
-@import url(https://fonts.googleapis.com/css?family=Passion+One:400,700);
+
 body {
   background: #242224;
   background-image:url(../img/cascos.jpg);
   background-position: center;
   background-size: cover;
-  /* background-repeat: repeat; */
+  background-repeat: repeat;
 }
 
 .container {
-  border: solid 3px #474544;
-  max-width: 768px;
   margin-top: 0px;
   margin:30px Auto;
 }

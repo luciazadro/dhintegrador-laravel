@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-@include('partials.head_login')
+@include('partials.head')
 <body>
     @include('partials.navbar')
       <div class="section1 row mx-0">
