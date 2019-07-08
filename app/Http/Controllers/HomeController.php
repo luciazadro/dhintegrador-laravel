@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Users;
-
+use App\Product;
+use App\Category;
 // Aqui van todos los modelos que necesitare en las vista
 
 
@@ -49,6 +50,9 @@ class HomeController extends Controller
     public function perfilAdm()
     {
         $users= User::all();
-        return view('perfilAdm')->with('users', $users);
+        $products = Product::all();
+        $categories = Category::all();
+        return view('perfilAdm')->with('users', $users)
+                                ->with('products',$products);
     }
 }

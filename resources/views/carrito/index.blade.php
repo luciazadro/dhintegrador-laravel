@@ -42,14 +42,14 @@
                 </td>
             </tr>
         </tbody>
-    {{-- <tfoot>
+    <tfoot>
       <tr>
         <td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continuar Compra</a></td>
         <td colspan="2" class="hidden-xs"></td>
         <td class="hidden-xs text-center"><strong>Total $100.-</strong></td>
         <td><a href="#" class="btn btn-success btn-block">Comprar <i class="fa fa-angle-right"></i></a></td>
       </tr>
-    </tfoot> --}}
+    </tfoot>
   </table>
     </div>
   </div>
