@@ -58,7 +58,6 @@
             <label for="product_img">Imagen Del Producto</label>
             <input class="form-control" type="file" name="picture">
         </div>
-
         <div class="form-group">
             <input type="submit" class="btn btn-primary" value="Agregar Producto" id="addProduct">
         </div>

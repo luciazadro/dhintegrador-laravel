@@ -17,7 +17,9 @@ class ProductController extends Controller
     {
        $limit=10;
        $product = Product::make()->paginate($limit);
-       return view('products.index')->with('movies', $product);
+       $category = Category::all();
+       return view('products.index')->with('products', $product)
+                                    ->with('categories',$category);
     }
 
     /**
@@ -27,8 +29,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-       $categories = Category::all();
-       return view('products.create')->with('categories', $categories);
+       $category = Category::all();
+       return view('products.create')->with('categories', $category);
     }
 
     /**
@@ -84,14 +86,14 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        $categories = Category::all();
+        $category = Category::all();
 
        $product = Product::find($product);
 
        return view('products.edit')
            ->with('product', $product)
            ->with('category', $product->category)
-           ->with('categories', $categories);
+           ->with('categories', $category);
     }
 
     /**
@@ -140,5 +142,11 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         
+    }
+    public function search(Request $request)
+    {
+        $input = $request->input('busqueda');
+        $products = Product::where('name','LIKE','%'.$input.'%')->paginate(8);
+        return view('products.index')->with("products", $products);
     }
 }

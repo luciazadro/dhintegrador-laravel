@@ -21,11 +21,14 @@
                         <td>{{$user->lastname}}</td>
                         <td>{{$user->email}}</td>
                         
-                            <td><a href="/users/show{{$user}}">Ver</a></td>
-                            <td><a href="/users/edit{{$user->id}}">Editar</a></td>    
-                            <td	class="icon-trash"><a href="/users/delete{{$user->id}}">Borrar</td>
+                        <td><a href="{{route('users.edit', ['id' => $user->id])}}" class="edit"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                            <form id='{{$user->id}}' class='form-delete' action="{{route('users.destroy',['id' => $user->id])}}" method="post">
+                            @method('DELETE')
+                            @csrf
+                            <a id='delete-link-{{$user->id}}' href="#" class="delete"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                            </form></td>
                         </tr>
                         @endforeach
-        </tbody>
+            </tbody>
         </table>
     </div>

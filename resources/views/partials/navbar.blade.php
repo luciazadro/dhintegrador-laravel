@@ -10,7 +10,7 @@
       <a class="nav-link" href="/home">Home</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="productos.php">Productos</a>
+      <a class="nav-link" href="products">Productos</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="formulario">Contacto</a>

@@ -41,6 +41,7 @@ Route::post('/products/create', 'ProductController@store');
 Route::get('/products/{id}', 'ProductController@show');
 Route::get('/products/{id}/update', 'ProductController@edit');
 Route::patch('/products/{id}/update', 'ProductController@update');
+Route::get('products/search', 'ProductController@search')->name('product.search');
 
 // CATEGORIAS
 Route::get('/categories', 'categoryController@index');
@@ -51,4 +52,15 @@ Route::post('/categories/create', 'categoryController@store');
 
 // ORDERS
 Route::get('/oders/index', 'OrderController@index');
+
+// CARRITO
+Route::group(['prefix' => 'carrito'], function() {
+    Route::get('/', 'CartController@index');
+    Route::get('/add/{product_id}', 'CartController@add');
+    Route::get('/remove/{product_id}', 'CartController@remove');
+    Route::get('/checkout', 'CartController@checkout');
+    Route::get('/flush', 'CartController@flush');
+}
+);
+
 

@@ -31,25 +31,31 @@
     </div>
     <div class='profileadm col-6'>
             <img src="img/Logo_aurora.png" alt="Logo de Aurora Materiales">
-            <h1>Agregar Productos</h1>
+            <h1>Productos</h1>
             <div class="bar">
                 <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
             </div>
-            <div>
-
-            </div>
-            <button type="button"class="btn btn-danger"><a href={{asset("/products.create")}}></a> Nuevo Producto </button>
+            <button type="button"class="btn btn-danger"><a href="{{route('products/create')}}"></a> Nuevo Producto </button>
+            <br>
+            <br>
+            <button type="button"class="btn btn-danger"><a href={{route('products/edit')}}></a> Editar Productos </button>
+            <br>
+            <br>
+            <button type="button"class="btn btn-danger"><a href={{route('products/destroy')}}></a> Borrar Productos </button>
     </div>
     <div class='profileadm col-6'>
             <img src="img/Logo_aurora.png" alt="Logo de Aurora Materiales">
-            <h1>Agregar Categorias</h1>
+            <h1>Categorias</h1>
             <div class="bar">
                 <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
             </div>
-            <div>
-
-            </div>
-            <button type="button" href="/producto/create" class="btn btn-danger"> Nueva Categoria </button>
+            <button type="button"class="btn btn-danger"><a href={{route('categories/create')}}></a> Nueva Categoria </button>
+            <br>
+            <br>
+            <button type="button"class="btn btn-danger"><a href={{route('categories/edit')}}></a> Editar Categorias </button>
+            <br>
+            <br>
+            <button type="button"class="btn btn-danger"><a href={{asset("/categories/destroy")}}></a> Borrar Categorias </button>
     </div>
     <div class='carrito col-10'>
             <img src="img/Logo_aurora.png" alt="Logo de Aurora Materiales">
@@ -68,6 +74,7 @@
             <div class="bar">
                 <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
             </div>
+            @include('orders.index')
             </form>
     </div>
     <div class='carrito col-10'>
@@ -78,7 +85,7 @@
             <div class="bar">
                 <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
             </div>
-            @include('products.index')
+            @include('products.show')
             </form>
     </div>
 </div> 
