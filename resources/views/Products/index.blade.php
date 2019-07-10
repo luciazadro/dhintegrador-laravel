@@ -19,10 +19,10 @@
             <div class="middle">
             <img src="{{asset('storage/'.$product->picture)}}" alt="" />
             </div>
-            <div class="bottom">
-                <div class="heading">{{$product->name}}</div>
+            <div class="bottom2">
+                <div class="info">{{$product->name}}</div>
                 <div class="info">{{$product->description}}</div>
-                <div class="price">{{$product->price}}</div>
+                <div class="info">$  {{$product->price}}</div>
             </div>
             <div>
             <a href="" class="btn btn-info"><i class="material-icons">&#xE147;</i></a>

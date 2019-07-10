@@ -462,6 +462,8 @@ form {
   margin: 20px;
   margin-top: 10px;
   border-radius: 4px;
+  width: 280px;
+  min-height: 430px;
   background: #fff;
   padding: 5px;
   display: flex;
@@ -492,9 +494,9 @@ form {
   margin-bottom: 40px;
 }
 .middle img {
-  width: 100%;
+  width: 60%;
 }
-.bottomproducts {
+.bottom2 {
   text-align: center;
   display: flex;
   flex-direction: column;
