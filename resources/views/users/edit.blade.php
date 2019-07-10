@@ -1,5 +1,5 @@
-<form class="" action={{"/users/update"}} method="POST" enctype="multipart/`rm-data">
-    {{ method_field('PATCH') }}
+<form class="" action={{"/users/update"}} method="{{route('users.update',['id' => $user->id])}}" enctype="multipart/`rm-data">
+    @method('PUT')
     @csrf
     <img src="img/Logo_aurora.png" alt="Logo de Aurora Materiales
     ">

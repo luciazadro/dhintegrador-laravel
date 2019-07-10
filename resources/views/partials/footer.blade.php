@@ -4,9 +4,9 @@
       <div class=" col-12 col-md-4">
         <h3>Aurora Materiales </h3>
           <ul>
-            <li><a href="formulario.php">Contacto</a> </li>
+            <li><a href="formulario">Contacto</a> </li>
             <li><a href="#">Institucional</a> </li>
-            <li><a href="#">Sobre Nosotros</a> </li>
+            <li><a href="about">Sobre Nosotros</a> </li>
           </ul>
           <p class="iconos">
             <a href="http://wa.me/541130847961?text=hola queria realizar el siguiente pedido "><i class="fab fa-whatsapp"></i></a>

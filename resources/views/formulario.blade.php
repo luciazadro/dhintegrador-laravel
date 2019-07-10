@@ -1,6 +1,6 @@
-@extends('layouts.formulario')
+@extends('layouts.master')
 @include('partials.navbar')
-@include('partials.head_perfil')
+@include('partials.head')
 @section('content')
 <div class="formulario col-6">
         <img src="img/Logo_aurora.png" alt="Logo de Aurora Materiales

@@ -17,7 +17,9 @@ class ProductController extends Controller
     {
        $limit=10;
        $product = Product::make()->paginate($limit);
-       return view('products.index')->with('movies', $product);
+       $category = Category::all();
+       return view('products.index')->with('products', $product)
+                                    ->with('categories',$category);
     }
 
     /**
@@ -27,8 +29,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-       $categories = Category::all();
-       return view('products.create')->with('categories', $categories);
+       $category = Category::all();
+       return view('products.create')->with('categories', $category);
     }
 
     /**
@@ -70,10 +72,10 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show()
     {
-        $product = Product::find($product);
-       return view('products.show')->with('product', $product);
+        $product = Product::all();
+       return view('products.show')->with('products', $product);
     }
 
     /**
@@ -82,16 +84,14 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
-        $categories = Category::all();
-
-       $product = Product::find($product);
+       $product = Product::find($id);
+       $category = Category::all();
 
        return view('products.edit')
            ->with('product', $product)
-           ->with('category', $product->category)
-           ->with('categories', $categories);
+           ->with('categories', $category);
     }
 
     /**
@@ -101,7 +101,7 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request,$id)
     {
         $rules = [
             'name' => 'required',
@@ -116,7 +116,7 @@ class ProductController extends Controller
  
         $this->validate($request, $rules, $messages);
         
-        $product = Product::find($product);
+        $product = Product::find($id);
         
          $product->title = $request->input('name') !== $product->title ? $request->input('name') : $product->name;
          
@@ -137,8 +137,15 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy($id)
+    {   
+        $product = Product::find($id);
+        $product->delete();
+    }
+    public function search(Request $request)
     {
-        
+        $input = $request->input('busqueda');
+        $products = Product::where('name','LIKE','%'.$input.'%')->paginate(8);
+        return view('products.index')->with("products", $products);
     }
 }
