@@ -29,25 +29,28 @@ Route::get('/perfilAdm', 'HomeController@perfilAdm');
 // USERS 
 Route::get('/users/index', 'UsersController@index');
 Route::get('/users/show', 'UsersController@show');
-Route::get('/users/edit', 'UsersController@edit');
+Route::get('/users/edit', 'UsersController@edit')->name('users.edit');
 Route::put('/users/edit', 'UsersController@edit');
-Route::put('/users/update', 'UsersController@eupdate');
+Route::put('/users/update', 'UsersController@update');
 Route::put('actualizar-usuario/{usuario}', 'UsersController@update');
 
 // PRODUCTOS
 Route::get('/products', 'ProductController@index');
-Route::get('/products/create', 'ProductController@create');
+Route::get('/products/create', 'ProductController@create')->name('products.create');
 Route::post('/products/create', 'ProductController@store');
-Route::get('/products/{id}', 'ProductController@show');
-Route::get('/products/{id}/update', 'ProductController@edit');
-Route::patch('/products/{id}/update', 'ProductController@update');
-Route::get('products/search', 'ProductController@search')->name('product.search');
+Route::get('/products/show','ProductController@show');
+Route::get('/products/edit/{id}','ProductController@edit')->name('products.edit');
+Route::put('/products/edit/{id}/update', 'ProductController@update')->name('products.update');;
+Route::patch('/products/destroy', 'ProductController@destroy')->name('products.destroy');
+Route::get('products/search', 'ProductController@search')->name('products.search');
 
 // CATEGORIAS
 Route::get('/categories', 'categoryController@index');
-Route::get('/categories/{id}/products', 'categoryController@showProducts');
+Route::get('/categories/{id}/categories', 'categoryController@showProducts');
 Route::get('/categories/{id}', 'categoryController@show');
-Route::get('/categoriescreate', 'categoryController@create');
+Route::get('/categories/create', 'categoryController@create')->name('categories.create');
+Route::get('categories/edit', 'categoryControllerController@edit')->name('categories.edit');
+Route::get('categories/destroy', 'ProductController@edit')->name('categories.detroy');
 Route::post('/categories/create', 'categoryController@store');
 
 // ORDERS

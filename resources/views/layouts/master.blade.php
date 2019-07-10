@@ -1,4 +1,5 @@
 @include('partials.head')
+@include('partials.navbar')
 @yield('content')
 @include('partials.footer')
 @include('partials.scrips')

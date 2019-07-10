@@ -72,10 +72,10 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show()
     {
-        $product = Product::find($product);
-       return view('products.show')->with('product', $product);
+        $product = Product::all();
+       return view('products.show')->with('products', $product);
     }
 
     /**
@@ -84,15 +84,13 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
-        $category = Category::all();
-
-       $product = Product::find($product);
+       $product = Product::find($id);
+       $category = Category::all();
 
        return view('products.edit')
            ->with('product', $product)
-           ->with('category', $product->category)
            ->with('categories', $category);
     }
 
@@ -103,7 +101,7 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request,$id)
     {
         $rules = [
             'name' => 'required',
@@ -118,7 +116,7 @@ class ProductController extends Controller
  
         $this->validate($request, $rules, $messages);
         
-        $product = Product::find($product);
+        $product = Product::find($id);
         
          $product->title = $request->input('name') !== $product->title ? $request->input('name') : $product->name;
          
@@ -139,9 +137,10 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
-    {
-        
+    public function destroy($id)
+    {   
+        $product = Product::find($id);
+        $product->delete();
     }
     public function search(Request $request)
     {

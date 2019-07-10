@@ -35,13 +35,7 @@
             <div class="bar">
                 <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
             </div>
-            <button type="button"class="btn btn-danger"><a href="{{route('products/create')}}"></a> Nuevo Producto </button>
-            <br>
-            <br>
-            <button type="button"class="btn btn-danger"><a href={{route('products/edit')}}></a> Editar Productos </button>
-            <br>
-            <br>
-            <button type="button"class="btn btn-danger"><a href={{route('products/destroy')}}></a> Borrar Productos </button>
+            <button type="button"class="btn btn-danger"><a href="{{route('products.create')}}">Nuevo Producto</a></button>
     </div>
     <div class='profileadm col-6'>
             <img src="img/Logo_aurora.png" alt="Logo de Aurora Materiales">
@@ -49,14 +43,8 @@
             <div class="bar">
                 <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
             </div>
-            <button type="button"class="btn btn-danger"><a href={{route('categories/create')}}></a> Nueva Categoria </button>
-            <br>
-            <br>
-            <button type="button"class="btn btn-danger"><a href={{route('categories/edit')}}></a> Editar Categorias </button>
-            <br>
-            <br>
-            <button type="button"class="btn btn-danger"><a href={{asset("/categories/destroy")}}></a> Borrar Categorias </button>
-    </div>
+            <button type="button"class="btn btn-danger"><a onclick=location href="{{route('categories.create')}}"> Nueva Categoria</a></button>
+            </div>
     <div class='carrito col-10'>
             <img src="img/Logo_aurora.png" alt="Logo de Aurora Materiales">
             <h1>Listado de Usuarios en Base de Datos
@@ -64,7 +52,6 @@
                 <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
             </div>
             @include('users.index')
-            {{-- <button type="button" class="btn btn-danger"> <a href="/users/index">Listado de Usuarios </a> </button> --}}
     </div>
     <div class='carrito col-10'>
         <form action="" method="POST">
@@ -74,7 +61,6 @@
             <div class="bar">
                 <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
             </div>
-            @include('orders.index')
             </form>
     </div>
     <div class='carrito col-10'>

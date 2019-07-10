@@ -1,5 +1,4 @@
 @extends('layouts.master')
-@include('partials.navbar')
 @section('content')
 @if(count($errors) > 0)
 <div class="alert alert-danger">
@@ -19,29 +18,29 @@
     <div class="bar">
             <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
     </div>
-    <form class="" action="" method="POST" enctype="multipart/form-data">
-        {{ method_field('PATCH') }}
-        @csrf
+    <form class='form-group' method="POST" action="{{url('products.update',$product->id)}}" enctype="multipart/form-data" >
+            @method('PUT')
+            @csrf
         <div class="form-group">
             <label for="name">Nombre</label>
-            <input type="text" name="name" value="{{ old("name") }}" class="form-control">
+            <input type="text" name="name" value="{{$product->name}}" class="form-control">
         </div>
         <div class="form-group">
             <label for="description">Descripcion</label>
-            <input type="text" name="description" value="{{ old("description") }}" class="form-control">
+            <input type="text" name="description" value="{{$product->description}}" class="form-control">
         </div>
         <div class="form-group">
             <label for="stock_id">Stock</label>
-            <input type="text" name="stock_id" value="{{ old("stock_id") }}" class="form-control">
+            <input type="text" name="stock_id" value="{{$product->stock}}" class="form-control">
         </div>
         <div class="form-group">
             <label for="price">Precio</label>
-            <input type="text" name="price" value="{{ old("price") }}" class="form-control">
+            <input type="text" name="price" value="{{$product->price}}" class="form-control">
         </div>
         <div class="form-group">
             <label for="categories">Categoria</label>
             <select class="form-control" name="category_id">
-                <option value="" disabled selected>Seleccione la Categoria</option>
+                <option value="{{$product->category->id}}" disabled selected>Seleccione la Categoria</option>
             @foreach($categories as $category)
             @if ($category->id == old("category_id"))
                 <option value="{{ $category->id }}" selected>
@@ -54,12 +53,13 @@
             @endif
             @endforeach
         </select>
-        </div>
+        </div> 
         <div class="form-group">
             <label for="product_img">Imagen Del Producto</label>
             <input class="form-control" type="file" name="picture">
         </div>
         <div class="form-group">
+            {{-- <a href="{{url('products/edit/'.$product->id)}}"" class="btn btn-info btn-md">Volver</a> --}}
             <input type="submit" class="btn btn-primary" value="Editar Producto" id="editProduct">
         </div>
     </form>

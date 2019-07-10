@@ -39,6 +39,10 @@ transition: color 0.4s ease;
 .iconos i.fa-youtube:hover{
   color: red;
 }
+.icono{
+  color: black;
+}
+
 .navbar{
   position: fixed;
   width: 100%;
@@ -456,12 +460,10 @@ form {
 }
 .block {
   margin: 20px;
-  margin-top: 110px;
+  margin-top: 10px;
   border-radius: 4px;
-  width: 280px;
-  min-height: 430px;
   background: #fff;
-  padding: 23px;
+  padding: 5px;
   display: flex;
   flex-direction: column;
   box-shadow: 0 2px 55px rgba(0,0,0,0.1);
@@ -492,7 +494,7 @@ form {
 .middle img {
   width: 100%;
 }
-.bottom {
+.bottomproducts {
   text-align: center;
   display: flex;
   flex-direction: column;

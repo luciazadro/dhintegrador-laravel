@@ -22,13 +22,14 @@
                         <td>{{$product->category->name}}</td>
                         <td>{{$product->stock_id}}</td>
                         <td>{{$product->price}}</td>
-                        <td><img width="40px" style="border-radius:50%" src="{{asset('/public.storage.product_img/'.$product->picture)}}" alt=""></td>
+
+                        <td><img width="40px" style="border-radius:50%" src="{{asset('storage/'.$product->picture)}}" alt=""></td>
                         <td>
-                        <a href="{{route('products.edit', ['id' => $product->id])}}" class="edit"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-						<form id='{{$product->id}}' class='form-delete' action="{{route('products.destroy',['id' => $product->id])}}" method="post">
+                        <a href="{{url('products/edit/'.$product->id)}}" class="edit"><i class="fas fa-edit icono"></i></a>
+						<form id='{{$product->id}}' class='form-delete' action="{{url('products/destroy/'.$product->id)}}" method="post">
 							@method('DELETE')
 							@csrf
-							<a id='delete-link-{{$product->id}}' href="#" class="delete"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+							<a id='delete-link-{{$product->id}}' href="#" class="delete"><i class="fas fa-trash-alt icono"></i></a>
 						</form></td> 
                         </tr> 
                         @endforeach
