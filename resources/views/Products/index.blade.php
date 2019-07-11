@@ -25,7 +25,7 @@
                 <div class="info">$  {{$product->price}}</div>
             </div>
             <div>
-            <a href="" class="btn btn-info"><i class="material-icons">&#xE147;</i></a>
+            <a href="{{route('carrito.add', $product->id)}}" class="btn btn-info"><i class="material-icons">&#xE147;</i></a>
             </div>
         </div>
         @endforeach

@@ -14,37 +14,31 @@ class CartController extends Controller
 
         $producto = [
             'id' => $product->id,
-            'nombre' => $product->name, 
+            'nombre' => $product->name,
+            'descripcion'=> $product->description,
             'precio' => $product->price,
         ];
 
-        session()->push('carrito.product', $producto);
+        session()->push('user.carrito'. $id, $producto);
 
         $limit = 10;
         $product = Product::make()->paginate($limit);
 
-        return redirect('/perfil');
+        return redirect('perfil');
 
     }
 
-    public function remove($id, Request $request)
+    public function remove($id)
     {
-        $product = $request->session()->get('carrito.product');
-        $keys = array_keys($product);
-
-        foreach($keys as $index) {
-            if($product[$index]['id'] == $id) {
-                $request->session()->forget('carrrito.product' . $index);
-            }
-        }
-        return redirect()->back();
+        session()->pull('users.carrito' . $id, "default");
+        return view('carrito');
 
     }
     
     public function flush(Request $request)
     {
         $request->session()->flush();
-        return redirect('/perfil');
+        return redirect('carrito');
     }
 
     public function checkout($id)
@@ -61,7 +55,7 @@ class CartController extends Controller
     {
         $product = Product::all();
         $product = session('carrito')['product'];
-        return view('carrito.show')->with('product', $product);
+        return view('carrito')->with('product', $product);
     }
 
     /**
