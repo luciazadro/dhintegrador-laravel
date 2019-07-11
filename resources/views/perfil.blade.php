@@ -38,7 +38,7 @@
         <div>
     
         </div>
-        <button type="button" href="/users/edit" class="btn btn-danger">Cambiar </button>
+        <button type="button"><a href="/users/edit" class="btn btn-danger">Cambiar </a></button>
     </div>
     <div class='profile col-2'>
     <img src="img/Logo_aurora.png" alt="Logo de Aurora Materiales">
@@ -46,13 +46,10 @@
             <div class="bar">
             <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
             </div>
-            <div>
-        
-            </div>
-            <button type="button" href="/users/edit" class="btn btn-danger">Ingresar </button>
+            <button type="button"> <a href="/users/edit" class="btn btn-danger">Ingresar </a></button>
         </div>
     <div class="carrito col-12">
-        @include('carrito.index')
+        @include('carrito')
     </div>
 </div>
 </body>

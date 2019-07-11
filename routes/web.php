@@ -58,9 +58,9 @@ Route::get('/oders/index', 'OrderController@index');
 
 // CARRITO
 Route::group(['prefix' => 'carrito'], function() {
-    Route::get('/', 'CartController@index');
-    Route::get('/add/{product_id}', 'CartController@add');
-    Route::get('/remove/{product_id}', 'CartController@remove');
+    Route::get('/', 'CartController@index')->name('carrito');
+    Route::get('/add/{id}', 'CartController@add')->name('carrito.add');
+    Route::get('/remove/{id}', 'CartController@remove');
     Route::get('/checkout', 'CartController@checkout');
     Route::get('/flush', 'CartController@flush');
 }
