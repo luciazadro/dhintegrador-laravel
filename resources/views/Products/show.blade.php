@@ -9,7 +9,6 @@
                     <th style="width:8%">Stock</th>
                     <th style="width:10%">Precio</th>
                     <th style="width:15%">Foto de Procuto</th>
-
             </thead>
         <tbody>
             <tr>

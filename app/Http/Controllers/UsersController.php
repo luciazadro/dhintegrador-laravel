@@ -46,10 +46,10 @@ class UsersController extends Controller
      * @param  \App\Users  $users
      * @return \Illuminate\Http\Response
      */
-    public function show(Users $users)
+    public function show($id)
     {
-        $usersDetalle = User::find($users);
-        return view('/users/show')->with('usersshow', $users);
+        $users = User::find($id);
+        return view('/users/show')->with('user', $users);
     }
 
     /**
@@ -58,9 +58,12 @@ class UsersController extends Controller
      * @param  \App\Users  $users
      * @return \Illuminate\Http\Response
      */
-    public function edit(Users $users)
+    public function edit($id)
     {
-        //
+        $user = User::find($id);
+
+        return view('users.edit')
+            ->with('users', $user);
     }
 
     /**

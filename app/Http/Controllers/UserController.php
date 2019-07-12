@@ -80,12 +80,12 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(User $id)
     {
-        $user = User::find($user);
+        $user = User::find($id);
 
         return view('users.edit')
-            ->with('users', $user);
+            ->with('user', $user);
     }
 
     /**
@@ -132,10 +132,10 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        $userBorrar = User::find($user);
-        $userBorrar->delete();
+        $user = User::find($id);
+        $user->delete();
         return redirect('/perfilAdm');
     }
 }

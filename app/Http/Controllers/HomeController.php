@@ -45,8 +45,10 @@ class HomeController extends Controller
     }
     public function perfil()
     {
+        $user = User::all();
         $product = Product::all();
-        return view('perfil')->with('products', $product);
+        return view('perfil')->with('users', $user)
+                            ->with('products', $product);
     }
     public function perfilAdm()
     {
