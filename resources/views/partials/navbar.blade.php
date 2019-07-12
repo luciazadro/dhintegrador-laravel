@@ -7,22 +7,22 @@
 <div class="collapse navbar-collapse" id="navbarNav">
   <ul class="navbar-nav">
     <li class="nav-link">
-      <a class="nav-link" href="/home">Home</a>
+      <a class="nav-link" href={{asset("home")}}>Home</a>
     </li>
     <li class="nav-link">
-      <a class="nav-link" href="products">Productos</a>
+      <a class="nav-link" href={{asset("products")}}>Productos</a>
     </li>
     <li class="nav-link">
-        <a class="nav-link" href="carrito">Carrito<i class="fas fa-shopping-cart">({{ isset(session('carrito')['products']) ? count(session('carrito')['products']) : 0 }})</i></a>
+        <a class="nav-link" href={{asset("carrito")}}>Carrito<i class="fas fa-shopping-cart">({{ isset(session('carrito')['products']) ? count(session('carrito')['products']) : 0 }})</i></a>
       </li>
     @if(auth()->user())
     <li class="nav-link">
-    <a class="nav-link" href="/perfil">{{Auth::User()->name}}</a>
+    <a class="nav-link" href={{asset("perfil")}}>{{Auth::User()->name}}</a>
     </li>
     @endif
     @if(auth()->user() && auth()->user()->role === 9)
     <li class="nav-link">
-    <a class="nav-link" href="/perfilAdm">Administrar</a>
+    <a class="nav-link" href={{asset("perfilAdm")}}>Administrar</a>
     </li>
     @endif
     @if(auth()->user())
