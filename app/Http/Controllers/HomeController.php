@@ -3,54 +3,60 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\Users;
+use App\Product;
+use App\Category;
+// Aqui van todos los modelos que necesitare en las vista
+
 
 class HomeController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        // $this->middleware('auth');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
     public function index()
     {
-        return view('home.index');
+        return view('home');
     }
-
     public function about()
     {
-        return view('home.about');
+        return view('about');
     }
-
     public function contact()
     {
-        return view(home.contact);
+        return view('formulario');
     }
-
-    public function store(Request $request)
+    public function store()
     {
-
-        $rules = [
-//aca falta poner las validaciones
-        ];
-
-        $message = [
-            'El campo :attribute es obligatorio'
-        ];
-
-        $this->validate($request, $rules, $messages);
-
-        $form = new Form($request->all());
-
-        // esto esta choreado del codigo de rodo solo A MODO DE EJEMPLO, esto se pone solo si los imputs del form no coinciden con la DB
-        
-// $movie = new Movie([
-        //     'title' => $request->input('title'), 
-        //     'awards' => $request->input('awards'), 
-        //     'release_date' => $request->input('release_date'), 
-        //     'rating' => $request->input('rating'), 
-        //     'genre_id' => $request->input('genre_id'),
-        //     'length' => $request->input('length'),
-        // ]);
-
-        $form->save();
-
-        return redirect('/');
-
-
+        return view('formulario');
+    }
+    public function perfil()
+    {
+        $user = User::all();
+        $product = Product::all();
+        return view('perfil')->with('users', $user)
+                            ->with('products', $product);
+    }
+    public function perfilAdm()
+    {
+        $users= User::all();
+        $product = Product::all();
+        $categories = Category::all();
+        return view('perfilAdm')->with('users', $users)
+                                ->with('products',$product);
+                                
     }
 }

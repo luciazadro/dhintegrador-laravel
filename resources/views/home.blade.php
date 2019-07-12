@@ -1,9 +1,12 @@
+@extends('layouts.master')
 @section('content')
-<div class="section1 row mx-0">
+@include('partials.head')
+<body>
+    @include('partials.navbar')
+      <div class="section1 row mx-0">
         <h2 class="first-title"> Tu futuro proyecto comienza aqui</h2> <br>
         <button type="button" class="btn btn-primary cotizar" name="button">Cotizar ahora</button>
       </div>
-
         <section class="section2 row mx-0">
             <!-- PRIMERA CARD -->
             <div class="card-titulo col-12 col-md-12" style="width: 18rem;">
@@ -38,11 +41,8 @@
                   </div>
                   </div>
               </article>
-
           </section>
-
           <div class="container">
-
             <section class="section3 row mx-0">
                           <div class="card col-12 col-md-12" style="width: 18rem;">
                             <h2 class="titulo-seccion">Categorías </h2>
@@ -131,94 +131,7 @@
                             </div>
                             </div>
                         </div>
-                        <!-- <div class="card col-12 col-md-4" style="width: 18rem;">
-                          <div class="flip-card">
-                            <div class="flip-card-inner">
-                              <div class="flip-card-front">
-                                <img src="img/cemento.jpg" alt="oferta" style="width:300px;height:300px;">
-                              </div>
-                              <div class="flip-card-back">
-                                <h1>productos</h1>
-                                <p>lista de principales</p>
-                                <p> <button type="button" class="btn btn-primary">comprar</button>
-                              </div>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="card col-12 col-md-4" style="width: 18rem;">
-                          <div class="flip-card">
-                            <div class="flip-card-inner">
-                              <div class="flip-card-front">
-                                <img src="img/cemento.jpg" alt="oferta" style="width:300px;height:300px;">
-                              </div>
-                              <div class="flip-card-back">
-                                <h1>productos</h1>
-                                <p>lista de principales</p>
-                                <p> <button type="button" class="btn btn-primary">comprar</button>
-                              </div>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="card col-12 col-md-4" style="width: 18rem;">
-                          <div class="flip-card">
-                            <div class="flip-card-inner">
-                              <div class="flip-card-front">
-                                <img src="img/cemento.jpg" alt="oferta" style="width:300px;height:300px;">
-                              </div>
-                              <div class="flip-card-back">
-                                <h1>productos</h1>
-                                <p>lista de principales</p>
-                                <p> <button type="button" class="btn btn-primary">comprar</button>
-                              </div>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="card col-12 col-md-4" style="width: 18rem;">
-                          <div class="flip-card">
-                            <div class="flip-card-inner">
-                              <div class="flip-card-front">
-                                <img src="img/cemento.jpg" alt="oferta" style="width:300px;height:300px;">
-                              </div>
-                              <div class="flip-card-back">
-                                <h1>productos</h1>
-                                <p>lista de principales</p>
-                                <p> <button type="button" class="btn btn-primary">comprar</button>
-                              </div>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="card col-12 col-md-4" style="width: 18rem;">
-                          <div class="flip-card">
-                            <div class="flip-card-inner">
-                              <div class="flip-card-front">
-                                <img src="img/cemento.jpg" alt="oferta" style="width:300px;height:300px;">
-                              </div>
-                              <div class="flip-card-back">
-                                <h1>productos</h1>
-                                <p>lista de principales</p>
-                                <p> <button type="button" class="btn btn-primary">comprar</button>
-                              </div>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="card col-12 col-md-4" style="width: 18rem;">
-                          <div class="flip-card">
-                            <div class="flip-card-inner">
-                              <div class="flip-card-front">
-                                <img src="img/cemento.jpg" alt="oferta" style="width:300px;height:300px;">
-                              </div>
-                              <div class="flip-card-back">
-                                <h1>productos</h1>
-                                <p>lista de principales</p>
-                                <p> <button type="button" class="btn btn-primary">comprar</button>
-                              </div>
-                            </div>
-                            </div>
-                        </div> -->
-
           </section>
         </div>
-      </div>
-            <?php include_once('components/footer.php'); ?>
-      </div>
+</body>
 @endsection

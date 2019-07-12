@@ -2,128 +2,150 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use Illuminate\Http\Request;
+use App\Category;
 
 class ProductController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        return view('products.index');
+       $limit=10;
+       $product = Product::make()->paginate($limit);
+       $category = Category::all();
+       return view('products.index')->with('products', $product)
+                                    ->with('categories',$category);
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
-        $products = Product::all();
-        return view('products.create')->with('products', $products);
+       $category = Category::all();
+       return view('products.create')->with('categories', $category);
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
-
-        $rules = [
-            //validaciones de los campos del prod
+        $reglas = [
+            'name' => 'required',
+            'description' => 'required',
+            'category_id' => 'required',
+            'stock_id' => 'required',
+            'price' => 'required',
         ];
-
-        $message = [
-            'El campo :attribute es obligatorio'
+ 
+        $mensajes = [
+            'required' => 'el campo :attribute es obligatorio'
         ];
+        $this->validate($request, $reglas, $mensajes);
 
-        $this->validate($request, $rules, $message);
-
+ 
+        $photopath_product = $request->file('picture')->store('product_img', 'public');
+ 
         $product = new Product($request->all());
-
-        // $movie = new Movie([
-        //     'title' => $request->input('title'), 
-        //     'awards' => $request->input('awards'), 
-        //     'release_date' => $request->input('release_date'), 
-        //     'rating' => $request->input('rating'), 
-        //     'genre_id' => $request->input('genre_id'),
-        //     'length' => $request->input('length'),
-        // ]);
-
-       $product->save(); 
-
-       return redirect('/cart');
+ 
+        $product->picture = $photopath_product;
+ 
+        $product->save();
+ 
+        return redirect('/products');
     }
 
-    public function cart()
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function show()
     {
-        return view('products.cart');
+        $product = Product::all();
+       return view('products.show')->with('products', $product);
     }
 
-    public function product($id)
-    {
-        $product = Product::find($id);
-
-        return view('products.show')->with('product', $product);
-    }
-
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Product  $product
+     * @return \Illuminate\Http\Response
+     */
     public function edit($id)
     {
-        $product = Product::find($id);
-        $categories = Category::all();
+       $product = Product::find($id);
+       $category = Category::all();
 
-        return view('products.edit')
-        ->with('product', $products)
-        ->with('category', $categories);
-                     
-     //   Paso 1, buscar la pelicula:
-       // $movie = Movie::find($id);
-        //Paso 2, por si hubiera que cambiarlo, envio los GENEROS tambien
-        //$genres = Genre::all();
-        //Paso 3, devolver la vista CON la pelicula y los generos:
-        //return view('movies.edit')
-       //     ->with('movie', $movie)
-         //   ->with('genres', $genres);
-        //De aca, ir al archivo Blade con la vista porque se complica!
+       return view('products.edit')
+           ->with('product', $product)
+           ->with('categories', $category);
     }
 
-    public function update(Request $request, $id)
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request,$id)
     {
-        // Dejo este dd comentado para ir viendo los cambios!
-        //dd($request->all());
-        // Primero que nada, nos auto-robamos la validacion:
         $rules = [
-            //PONER VALIDACION DEL PROD
+            'name' => 'required',
+            'description' => 'required',
+            'category_id' => 'required',
+            'stock_id' => 'required',
+            'price' => 'required',
         ];
-
-        $message = [
+        $messages = [
             'required' => 'el campo :attribute es obligatorio',
         ];
+ 
+        $this->validate($request, $rules, $messages);
         
-        $this->validate($request, $rules, $message);
-
-        // La logica de hacer un update es la siguiente:
-        // Tenemos el personaje A, que se llama Request, y el personaje B, que se 
-        // llama Movie.
-        // El personaje Request trae data que puede ser nueva o no, y el personaje Movie
-        // se para adelante y dice "compara con todo lo que tengo yo". Si el valor de un 
-        // campo de Request es igual a lo que ya tiene Movie, no hay cambio. Si es diferente,
-        // Movie atrapa el cambio y lo guarda, borrando el dato que tenia antes.
-
-        // En codigo:
         $product = Product::find($id);
-
-        // Explicacion con el primer campo/atributo
-         $movie->title = $request->input('title') !== $movie->title ? $request->input('title') : $movie->title;
-         // El titulo va a ser igual a lo que salga de este if ternario.
-         // El if ocurre antes del signo de pregunta, "lo que llega de Request, NO ES igual a lo que movie ya tiene?"
-         // si NO es igual, pone lo que llego, si es igual, queda como esta.
-         $movie->rating = $request->input('rating') !== $movie->rating ? $request->input('rating') : $movie->rating;
-         $movie->awards = $request->input('awards') !== $movie->awards ? $request->input('awards') : $movie->awards;
-         $movie->length = $request->input('length') !== $movie->length ? $request->input('length') : $movie->length;
-         $movie->release_date = $request->input('release_date') !== $movie->release_date ? $request->input('release_date') : $movie->release_date;
-         $movie->genre_id = $request->input('genre_id') !== $movie->genre_id ? $request->input('genre_id') : $movie->genre_id;
-
-         //una vez que terminamos el proceso anterior, simplemente hacemos:
+        
+         $product->title = $request->input('name') !== $product->title ? $request->input('name') : $product->name;
+         
+         $product->description = $request->input('description') !== $product->description ? $request->input('description') : $product->description;
+         $product->category_id = $request->input('category_id') !== $product->category_id ? $request->input('category_id') : $product->category_id;
+         $product->stock_id = $request->input('stock_id') !== $product->stock_id ? $request->input('stock_id') : $product->stock_id;
+         $product->price = $request->input('price') !== $product->price ? $request->input('price') : $product->price;
+         $product->picture = $request->input('picture') !== $product->picture ? $request->input('picture') : $product->picture;
+         
          $product->save();
-
-         // y vamos a ver los cambios:
-         return redirect("/cart" . $product->id);
+     
+         return redirect("/products/".$product->id);
     }
 
-    public function delete($id)
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {   
+        $product = Product::find($id);
+        $product->delete();
+    }
+    public function search(Request $request)
     {
-        //
+        $input = $request->input('busqueda');
+        $products = Product::where('name','LIKE','%'.$input.'%')->paginate(8);
+        return view('products.index')->with("products", $products);
     }
 }

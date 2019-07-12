@@ -2,60 +2,140 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function profile()
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
     {
-        return view('users.profile');
+        $users = User::all();
+        return view('users.index')->with('users',$users);
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
-        return view(users.create);
+        // 
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
-        $rules = [
-            //aca falta poner las validaciones
-                    ];
-            
-                    $messages = [
-                        'El campo :attribute es obligatorio'
-                    ];
-            
-                    $this->validate($request, $rules, $messages);
-            
-                    $form = new Form($request->all());
-            
-                    // esto esta choreado del codigo de rodo solo A MODO DE EJEMPLO, esto se pone solo si los imputs del form no coinciden con la DB
-                    
-            // $movie = new Movie([
-                    //     'title' => $request->input('title'), 
-                    //     'awards' => $request->input('awards'), 
-                    //     'release_date' => $request->input('release_date'), 
-                    //     'rating' => $request->input('rating'), 
-                    //     'genre_id' => $request->input('genre_id'),
-                    //     'length' => $request->input('length'),
-                    // ]);
-            
-                    $form->save();
-            
-                    return redirect('/login');  
+        $reglas = [
+            'name' => 'required',
+            'lastname' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'avatar' => 'required',
+            'role' => 'required'
+        ];
+
+        $mensajes = [
+            'required' => 'el campo :attribute es obligatorio'
+        ];
+
+        $this->validate($request, $reglas, $mensajes);
+
+        $avatar = $request->file('avatar')->store('avatar', 'public');
+        
+        $user = new User($request->all());
+
+        $user->avatar = $avatar;
+
+        $user->save();
+
+        return redirect('/home');
+
     }
 
-    public function login()
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    // public function show(User $user)
+    // {
+    //     //
+    // }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(User $id)
     {
-        return view(users.login);
+        $user = User::find($id);
+
+        return view('users.edit')
+            ->with('user', $user);
     }
 
-    public function logout()
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, User $user)
     {
-        //aca tendria que hacer la logicaa para que me desloguee, acto seguido un redirect al home/login
-        return redirect('/login');
+        $reglas = [
+            'adress' => 'required',
+            'location' => 'required',
+            'stade' => 'required',
+            'zipcode' => 'required',
+            'country' => 'required',
+            'avatar' => 'required',
+            'role' => 'required'
+        ];
+
+        $mensajes = [
+            'required' => 'el campo :attribute es obligatorio'
+        ];
+        $this->validate($request, $reglas, $mensajes);
+        
+        $users = User::find($user);
+
+         $users->adress = $request->input('adress') !== $users->adress ? $request->input('adress') : $users->adress;
+         $users->location = $request->input('location') !== $users->location ? $request->input('location') : $users->location;
+         $users->stade = $request->input('stade') !== $users->stade ? $request->input('stade') : $users->stade;
+         $users->country = $request->input('country') !== $users->country ? $request->input('country') : $users->country;
+         $users->zipcode = $request->input('zipcode') !== $users->zipcode ? $request->input('zipcode') : $users->zipcode;
+         $users->avatar = $request->input('avatar') !== $users->avatar ? $request->input('avatar') : $users->avatar;
+
+         $users->save();
+
+         return redirect("/perfil/");
     }
 
-
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $user = User::find($id);
+        $user->delete();
+        return redirect('/perfilAdm');
+    }
 }

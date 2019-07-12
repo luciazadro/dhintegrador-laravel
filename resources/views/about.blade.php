@@ -1,5 +1,5 @@
-@extends('master')
-
+@extends('layouts.master')
+@include('partials.navbar')
 @section('content')
 <br>
     <div class="headerabout row mt-5">

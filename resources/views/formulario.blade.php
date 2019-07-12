@@ -1,30 +1,23 @@
+@extends('layouts.master')
+@include('partials.navbar')
+@include('partials.head')
 @section('content')
-<br>
-<br>
-<br>
-<br>
-    <div class="formulario col-6">
-        <img src="img/Logo_aurora.png" alt="Logo de Aurora Materiales">
-            <h1>&bull; FORMULARIO DE CONTACTO &bull;</h1>
-            <div class="bar">
-                <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
-            </div>
-            <ul>
-                @foreach ($message as $message)
-                <li>
-                {{$message}}
-                </li>
-            </ul>
-            <form class="form-horizontal" action="" method="POST">
+<div class="formulario col-6">
+        <img src="img/Logo_aurora.png" alt="Logo de Aurora Materiales
+        ">
+        <h1>&bull; FORMULARIO DE CONTACTO &bull;</h1>
+        <div class="bar">
+            <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
+        </div>
+        <form class="form-horizontal" action="" method="POST">
                 <fieldset>
                     <div class="form-group"> <!-- Nombre -->
-                        <label for="full_name_id" class="control-label">Nombre</label>
-                        <input type="text" class="form-control" id="Nombre" name="nombre" placeholder="Ingresar Nombre">
-                        <!-- poner persistencia de datos value="{{old('Nombre')}}" -->
+                    <label for="full_name_id" class="control-label">Nombre</label>
+                    <input type="text" class="form-control" id="Nombre" name="nombre" placeholder="Ingresar Nombre">
                     </div>
                     <div class="form-group"> <!-- Apellido -->
-                        <label for="apellido" class="control-label">Apellido</label>
-                        <input type="text" class="form-control" id="Apellido" name="apellido" placeholder="Ingresar Apellido">
+                    <label for="apellido" class="control-label">Apellido</label>
+                    <input type="text" class="form-control" id="Apellido" name="apellido" placeholder="Ingresar Apellido">
                     </div>
                     <div class="form-group"> <!-- Domicilio -->
                         <label for="domicilio" class="control-label">Domicilio</label>
@@ -43,7 +36,7 @@
                         <input type="text" class="form-control" id="ciudad" name="ciudad" placeholder="Ciudad o Localidad">
                     </div>
                     <div class="bar">
-                       <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
+                    <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
                     </div>
                     <div class="form-group"><!-- Contacto-->
                         <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o bigicon">Contacto</i>
@@ -52,12 +45,12 @@
                         <textarea class="form-control" id="mensaje" name="mensaje" placeholder="Ingrese la consulta." rows="7"></textarea>
                     </div>
                     <div class="bar">
-                       <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
+                    <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
                     </div>
                 </fieldset>
-              <button type="submit" class="btn btn-danger"> Contactarse </button>
             </form>
-        <br>
-    </div>
+        <button type="submit" class="btn btn-danger"> Contactarse </button>
+        </form>
+<br>
+</div>
 </section>
-@endsection
