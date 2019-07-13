@@ -3,34 +3,41 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
-use Illuminate\Http\Request;
+use App\User;
 use App\Product;
+use Illuminate\Http\Request;
+
 
 class CartController extends Controller
 {
     public function add($id)
     {
+        $product = collect(session('carrito.products'));
+
         $product = Product::find($id);
 
-        $producto = [
-            'id' => $product->id,
-            'nombre' => $product->name,
-            'descripcion'=> $product->description,
-            'precio' => $product->price,
-        ];
+        $product[$product->id]=$product;
 
-        session()->push('user.carrito'. $id, $producto);
+        // $product = [
+        //     'id' => $product->id,
+        //     'name' => $product->name,
+        //     'description'=> $product->description,
+        //     'price' => $product->price,
+        //     'picture'=>$product->picture
+        // ];
+
+        session()->push('carrito.products', $product);
 
         $limit = 10;
         $product = Product::make()->paginate($limit);
 
-        return redirect('perfil');
+        return redirect('products');
 
     }
 
     public function remove($id)
     {
-        session()->pull('users.carrito' . $id, "default");
+        session()->pull('carrito.products' . $id, "default");
         return view('carrito');
 
     }
@@ -38,7 +45,7 @@ class CartController extends Controller
     public function flush(Request $request)
     {
         $request->session()->flush();
-        return redirect('carrito');
+        return redirect('products');
     }
 
     public function checkout($id)
@@ -53,8 +60,7 @@ class CartController extends Controller
      */
     public function index()
     {
-        $product = Product::all();
-        $product = session('carrito')['product'];
+        $product = session('carrito.products');
         return view('carrito')->with('product', $product);
     }
 

@@ -43,8 +43,11 @@
             <div class="bar">
                 <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
             </div>
-            <button type="button"class="btn btn-danger"><a onclick=location href="{{route('categories.create')}}"> Nueva Categoria</a></button>
-            </div>
+            <button type="button"class="btn btn-danger"><a href="{{route('categories.create')}}"> Nueva Categoria</a></button>
+            <br>
+            <br>
+            <button type="button"class="btn btn-danger"><a href="{{route('categories')}}"> Editar Categoria</a></button>
+    </div>
     <div class='carrito col-10'>
             <img src="img/Logo_aurora.png" alt="Logo de Aurora Materiales">
             <h1>Listado de Usuarios en Base de Datos

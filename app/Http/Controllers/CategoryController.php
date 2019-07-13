@@ -15,8 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
-       return view('categories.index')->with('categories', $categories);
+        $category = Category::all();
+       return view('categories.index')->with('categories', $category);
     }
 
     /**
@@ -26,7 +26,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        
+       $category = Category::all();
+       return view('categories.create')->with('categories', $category);
     }
 
     /**
@@ -37,7 +38,20 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        // 
+        $reglas = [
+            'name' => 'required',
+        ];
+ 
+        $mensajes = [
+            'required' => 'el campo :attribute es obligatorio'
+        ];
+        $this->validate($request, $reglas, $mensajes);
+ 
+        $category = new Category($request->all());
+ 
+        $category->save();
+ 
+        return redirect('/perfilAdm');
     }
 
     /**
@@ -46,16 +60,11 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function showProducts(Category $category)
+    
+    public function show()
     {
-        $category = Category::find($category);
-       $products = Product::where('category_id', $category)->get();
-
-       return view('categories.show')->with('category', $category)->with('products', $products);
-    }
-    public function show(Category $category)
-    {
-        return view('categories.show_categories')->withGenre(Category::find($category));
+        $category = Category::all();
+        return view('categories.show')->with('categories',$category);
 
     }
 
@@ -65,9 +74,14 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(Category $id)
     {
-        
+       $category = Category::find($id);
+       $product = Product::all();
+
+       return view('categories.edit')
+           ->with('product', $product)
+           ->with('categories', $category);
     }
 
     /**
@@ -77,9 +91,24 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
-        //
+        $rules = [
+            'name' => 'required',
+        ];
+        $messages = [
+            'required' => 'el campo :attribute es obligatorio',
+        ];
+ 
+        $this->validate($request, $rules, $messages);
+        
+        $category = Category::find($id);
+        
+         $category->name = $request->input('name') !== $category->name ? $request->input('name') : $category->name;
+         
+         $category->save();
+     
+         return redirect("/categories/".$category->id);
     }
 
     /**
@@ -88,8 +117,9 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        //
+        $category = Caetegory::find($id);
+        $category->delete();
     }
 }

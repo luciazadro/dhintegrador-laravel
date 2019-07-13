@@ -6,4 +6,5 @@
     crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 <script src="https://use.fontawesome.com/4d20f65705.js"></script>
-<script src="js/master.js"></script>
+<script src="js/app.js"></script>
+<script src="js/carrito.js"></script>
