@@ -86,8 +86,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-       $product = Product::find($id);
-       $category = Category::all();
+        $category = Category::all();
+        $product = Product::find($id);
+     
 
        return view('products.edit')
            ->with('product', $product)
@@ -110,6 +111,7 @@ class ProductController extends Controller
             'stock_id' => 'required',
             'price' => 'required',
         ];
+        
         $messages = [
             'required' => 'el campo :attribute es obligatorio',
         ];

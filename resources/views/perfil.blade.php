@@ -35,16 +35,18 @@
         <div class="bar">
         <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
         </div>
-        <button type="button"><a href='' class="btn btn-danger">Cambiar </a></button>
+        <!-- corregir esta url
+        <button type="button"><a href="{{url('
+            /users/edit/{id}'.$users->id)}}" class="btn btn-danger">Cambiar </a></button> -->
     </div>
-    <div class='profile col-2'>
-    <img src="img/Logo_aurora.png" alt="Logo de Aurora Materiales">
-    <h1>Actualiza tus Datos de Envio</h1>
-            <div class="bar">
-            <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
-            </div>
-            <button type="button"> <a href="/users/edit" class="btn btn-danger">Ingresar </a></button>
-        </div>
+    <!-- <div class='profile col-2'>
+        <img src="img/Logo_aurora.png" alt="Logo de Aurora Materiales">
+        <h1>Actualiza tus Datos de Envio</h1>
+                <div class="bar">
+                <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
+                </div>
+                <button type="button"> <a href="/users/edit" class="btn btn-danger">Ingresar </a></button>
+    </div> -->
     <div class="carrito col-12">
         @include('carrito')
     </div>

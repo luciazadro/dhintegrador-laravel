@@ -38,10 +38,10 @@ Route::get('users/destroy/{id}', 'UserController@destroy')->name('users.detroy')
 Route::get('/products', 'ProductController@index')->name('products');
 Route::get('/products/create', 'ProductController@create')->name('products.create');
 Route::post('/products/create', 'ProductController@store');
-Route::get('/products/show','ProductController@show');
+Route::get('/products/show','ProductController@show'); /* me parece que es redudante esta ruta */
 Route::get('/products/{id}/update','ProductController@edit')->name('products.edit')->middleware('admin');
 Route::put('/products/{id}/update', 'ProductController@update')->name('products.update');
-Route::patch('/products/destroy', 'ProductController@destroy')->name('products.destroy');
+Route::patch('/products/{id}/destroy', 'ProductController@destroy')->name('products.destroy')->middleware('admin');
 Route::post('products/search', 'ProductController@search')->name('products.search');
 
 // CATEGORIAS

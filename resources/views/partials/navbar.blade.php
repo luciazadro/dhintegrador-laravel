@@ -16,28 +16,28 @@
         <a class="nav-link" href={{asset("carrito")}}>Carrito<i class="fas fa-shopping-cart">({{ isset(session('carrito')['products']) ? count(session('carrito')['products']) : 0 }})</i></a>
       </li>
     @if(auth()->user())
-    <li class="nav-link">
-    <a class="nav-link" href={{asset("perfil")}}>{{Auth::User()->name}}</a>
-    </li>
+      <li class="nav-link">
+        <a class="nav-link" href={{asset("perfil")}}>{{Auth::User()->name}}</a>
+      </li>
     @endif
     @if(auth()->user() && auth()->user()->role === 9)
-    <li class="nav-link">
-    <a class="nav-link" href={{asset("perfilAdm")}}>Administrar</a>
-    </li>
+      <li class="nav-link">
+       <a class="nav-link" href={{asset("perfilAdm")}}>Administrar</a>
+      </li>
     @endif
     @if(auth()->user())
-    <li class="nav-link">
-      <a class="nav-link" href="{{ route('logout') }}"
-        onclick="event.preventDefault();
-        document.getElementById('logout-form').submit();">{{ __('Logout') }}  <i class="fas fa-sign-out-alt"></i></a>
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-        @csrf
-        </form>
-    </li>
+      <li class="nav-link">
+        <a class="nav-link" href="{{ route('logout') }}"
+          onclick="event.preventDefault();
+          document.getElementById('logout-form').submit();">{{ __('Logout') }}  <i class="fas fa-sign-out-alt"></i></a>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+          @csrf
+          </form>
+      </li>
     @else
-    <li class="nav-link">
-        <a href="/login">Ingresar</a>
-    </li>
+      <li class="nav-link">
+          <a class="nav-link" href="/login">Ingresar</a>
+      </li>
     @endif
     @if(!auth()->user())
     <li class="nav-link">
