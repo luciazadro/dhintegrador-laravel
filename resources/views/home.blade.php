@@ -5,7 +5,13 @@
     @include('partials.navbar')
       <div class="section1 row mx-0">
         <h2 class="first-title"> Tu futuro proyecto comienza aqui</h2> <br>
-        <button type="button" class="btn btn-primary cotizar" name="button">Cotizar ahora</button>
+        <article class="articulo1 p-0 col-12 col-md-12 col-lg-12">
+          <p class="foot">Somos una empresa con mas de 90 años en el rubro. Dedicada a la venta de materiales para la construccion y sanitarios. Ofrecemos una solucion integral a la hora de proveer todo lo necesario para la obra</p>
+          <p class="foot">Estamos Ubicados en la zona de versalles, Capital Federal. Realizamos entregas en toda la provicia de Buenos Aires</p>
+          <p class="foot">Tomamos pedidos de uno a dos días de anticipacion; la entrega se hace con camiones volcadores y el servicio de hidrogrúa se contrata aparte por camion completo. </p>
+          <p class="foot">Contamos con promociones con varias tarjetas de credito, aceptamos débito, efectivo, transferencias bancarias y cheques al día.</p>
+        </article>
+       <!-- <button type="button" class="btn btn-primary cotizar" name="button">Cotizar ahora</button> -->
       </div>
         <section class="section2 row mx-0">
             <!-- PRIMERA CARD -->

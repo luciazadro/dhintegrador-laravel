@@ -8,8 +8,6 @@
                     <th style="width:15%">Categoria</th>
                     <th style="width:8%">Stock</th>
                     <th style="width:10%">Precio</th>
-                    <th style="width:15%">Foto de Procuto</th>
-
             </thead>
         <tbody>
             <tr>
@@ -22,14 +20,13 @@
                         <td>{{$product->category->name}}</td>
                         <td>{{$product->stock_id}}</td>
                         <td>{{$product->price}}</td>
-
-                        <td><img width="40px" style="border-radius:50%" src="{{asset('storage/'.$product->picture)}}" alt=""></td>
                         <td>
-                        <a href="{{url('products/edit/'.$product->id)}}" class="edit"><i class="fas fa-edit icono"></i></a>
-						<form id='{{$product->id}}' class='form-delete' action="{{url('products/destroy/'.$product->id)}}" method="post">
-							@method('DELETE')
+                        <a href="{{url('products/'.$product->id.'/update')}}" class="edit  btn btn-primary"><i class="fas fa-edit icono"></i></a>
+						<form id='{{$product->id}}' class='form-delete' action="{{url('products/'.$product->id)}}" method="post">
+							@method('delete')
 							@csrf
-							<a id='delete-link-{{$product->id}}' href="#" class="delete"><i class="fas fa-trash-alt icono"></i></a>
+                            <button type="submit" class="btn btn-danger"value=""><i class="fas fa-trash-alt icono"></i></button>
+
 						</form></td> 
                         </tr> 
                         @endforeach

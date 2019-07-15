@@ -29,19 +29,22 @@ Route::get('/perfilAdm', 'HomeController@perfilAdm')->middleware('admin');
 // USERS 
 Route::get('/users/index', 'UsersController@index')->name('users.index');
 Route::get('/users/show/{id}', 'UsersController@show')->name('users.show');
-Route::get('/users/edit/{id}', 'UserController@edit')->name('users.edit')->middleware('admin');
-Route::put('/users/{id}/update', 'UserController@update');
-Route::get('users/destroy/{id}', 'UserController@destroy')->name('users.detroy');
+Route::get('/users/{id}/update', 'UserController@edit')->name('users.edit');
+Route::patch('/users/{id}/update', 'UserController@update');
+Route::delete('users/{id}', 'UserController@destroy')->name('users.detroy');
+// 
+// Route::get('/users/{id}/edit', 'UserController@edit')->name('users.edit')->middleware('admin');
+// Route::put('/users/{id}/edit', 'UserController@updateShiping');
 
 
 // PRODUCTOS
 Route::get('/products', 'ProductController@index')->name('products');
 Route::get('/products/create', 'ProductController@create')->name('products.create');
 Route::post('/products/create', 'ProductController@store');
-Route::get('/products/show','ProductController@show');
+Route::get('/products/show','ProductController@show'); /* me parece que es redudante esta ruta */
 Route::get('/products/{id}/update','ProductController@edit')->name('products.edit')->middleware('admin');
-Route::put('/products/{id}/update', 'ProductController@update')->name('products.update');
-Route::patch('/products/destroy', 'ProductController@destroy')->name('products.destroy');
+Route::patch('/products/{id}/update', 'ProductController@update')->name('products.update');
+Route::delete('/products/{id}/', 'ProductController@destroy')->name('products.destroy')->middleware('admin');
 Route::post('products/search', 'ProductController@search')->name('products.search');
 
 // CATEGORIAS
@@ -50,7 +53,7 @@ Route::get('/categories/{id}', 'CategoryController@show')->name('categories.show
 Route::get('/categories/create', 'CategoryController@create')->name('categories.create')->middleware('admin');
 Route::post('/categories/create', 'CategoryController@store');
 Route::get('categories/{id}/update', 'CategoryControllerController@edit')->name('categories.edit')->middleware('admin');
-Route::put('/categories/{id}/update', 'CategoryController@update')->name('categories.update');
+Route::put('/categories/{id}/update', 'CategoryController@update');
 Route::get('categories/destroy', 'CategoryController@edit')->name('categories.detroy')->middleware('admin');
 
 // ORDERS
@@ -60,7 +63,7 @@ Route::get('/oders/index', 'OrderController@index');
 Route::group(['prefix' => 'carrito'], function() {
     Route::get('/', 'CartController@index')->name('carrito');
     Route::get('/add/{product_id}', 'CartController@add')->name('carrito.add');
-    Route::get('/remove/{product_id}', 'CartController@remove')->name('carrito.remove');
+    Route::delete('/remove/{product_id}', 'CartController@remove')->name('carrito.remove');
     Route::get('/checkout', 'CartController@checkout')->name('carrito.checkout');
     Route::get('/flush', 'CartController@flush')->name('carrito.flush');
 }

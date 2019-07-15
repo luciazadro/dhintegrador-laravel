@@ -22,11 +22,11 @@
                         <td>{{$user->email}}</td>
                         
                         <td><a href="{{('users/show/'.$user->id)}}">  <i class="fas fa-eye icono"></i></a></td>
-                        <td><a href="{{url('users/edit/'.$user->id)}}" class="edit">  <i class="fas fa-edit icono"></i></a></td>
-                        <td><form id='{{$user->id}}' class='form-delete' action="{{url('users/destroy/'.$user->id)}}" method="post">
+                        <td><a href="{{('users/'.$user->id.'/update')}}" class="edit"><i class="fas fa-edit icono"></i></a></td>
+                        <td><form id='{{$user->id}}' class='form-delete' action="{{url('users/'.$user->id)}}" method="post">
                             @method('DELETE')
                             @csrf
-                            <a id='delete-link-{{$user->id}}' href="#" class="delete">  <i class="fas fa-trash-alt icono"></i></a>
+                            <button id='delete-link-{{$user->id}}'class="delete"><i class="fas fa-trash-alt icono"></i></button>
                             </form></td>
                         </tr>
                         @endforeach

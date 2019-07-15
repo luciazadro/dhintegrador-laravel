@@ -18,8 +18,8 @@
     <div class="bar">
             <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
     </div>
-    <form class='form-group' method="POST" action="{{url('categories.update',$category->id)}}" enctype="multipart/form-data" >
-            @method('PUT')
+    <form class='form-group' method="POST" action="" enctype="multipart/form-data" >
+            @method('PACTH')
             @csrf
         <div class="form-group">
             <label for="name">Nombre</label>
