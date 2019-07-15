@@ -18,9 +18,10 @@
     <div class="bar">
             <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
     </div>
-    <form class='form-group' method="POST" action="{{url('products/update',$product->id)}}" enctype="multipart/form-data" >
-            @method('PUT')
+    <form class='form-group' method="POST" action="" enctype="multipart/form-data" >
+            @method('PATCH')
             @csrf
+        
         <div class="form-group">
             <label for="name">Nombre</label>
             <input type="text" name="name" value="{{$product->name}}" class="form-control">
@@ -31,7 +32,7 @@
         </div>
         <div class="form-group">
             <label for="stock_id">Stock</label>
-            <input type="text" name="stock_id" value="{{$product->stock}}" class="form-control">
+            <input type="text" name="stock_id" value="{{$product->stock_id}}" class="form-control">
         </div>
         <div class="form-group">
             <label for="price">Precio</label>

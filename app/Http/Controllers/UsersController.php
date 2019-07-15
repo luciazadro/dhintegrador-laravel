@@ -73,7 +73,8 @@ class UsersController extends Controller
      * @param  \App\Users  $users
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Users $users)
+    
+    public function update(Request $request,$id)
     {
         $rules = [
             'name' => 'required',
@@ -96,7 +97,7 @@ class UsersController extends Controller
 
         $this->validate($request, $rules, $messages);
 
-        $users = Users::find($id);
+        $users = User::find($id);
 
         $users->name = $request->input('name') !== $users->name ? $request->input('name') : $users->name;
 
@@ -132,10 +133,9 @@ class UsersController extends Controller
      * @param  \App\Users  $users
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Users $users)
+    public function destroy($id)
     {
-        $user = User::find($users);
-        $user->delete();
+        $user = User::destroy($id);
         return redirect()->route("users.index");
     }
 }

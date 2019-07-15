@@ -30,10 +30,13 @@
                 </section>
                 @if(auth()->user() && auth()->user()->role === 9)
                 <section>
-                    <a href="{{url('/products/{id}/update'.$product->id)}}" class="btn btn-warning"><i class="material-icons">delete</i></a>
+                    <a href="{{url('products/'.$product->id.'/update')}}" class="btn btn-warning"><i class="material-icons">edit</i></a>
                 </section>
                 <section>
-                    <a href="{{url('/products/{id}/destroy'.$product->id)}}" class="btn btn-danger"><i class="material-icons">edit</i></a>
+                <form id='{{$product->id}}' class='form-delete' action="{{url('products/'.$product->id)}}" method="post">
+                @method('delete')
+                @csrf
+                <button type="submit" class="btn btn-danger"value=""><i class="material-icons">delete</i></button>
                 </section>
                 @endif
             </article>

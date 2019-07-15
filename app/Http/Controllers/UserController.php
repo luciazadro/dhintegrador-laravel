@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use phpDocumentor\Reflection\DocBlock\Tags\Return_;
 
 class UserController extends Controller
 {
@@ -80,7 +81,7 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $id)
+    public function edit($id)
     {
         $user = User::find($id);
 
@@ -95,16 +96,17 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function updateShiping(Request $request, $id)
     {
         $reglas = [
+            
             'adress' => 'required',
             'location' => 'required',
             'stade' => 'required',
             'zipcode' => 'required',
             'country' => 'required',
             'avatar' => 'required',
-            'role' => 'required'
+            'role' => 'required',
         ];
 
         $mensajes = [
@@ -112,7 +114,7 @@ class UserController extends Controller
         ];
         $this->validate($request, $reglas, $mensajes);
         
-        $users = User::find($user);
+        $users = User::find($id);
 
          $users->adress = $request->input('adress') !== $users->adress ? $request->input('adress') : $users->adress;
          $users->location = $request->input('location') !== $users->location ? $request->input('location') : $users->location;
@@ -124,6 +126,57 @@ class UserController extends Controller
          $users->save();
 
          return redirect("/perfil/");
+    }
+    public function update(Request $request, $id)
+    {
+        $rules = [
+            'name' => 'required',
+            'email' => 'required',
+            // 'password' => 'required', 
+            // 'avatar' => 'required',
+            'lastname' => 'required',
+            // 'adress' => 'required',
+            // 'location' => 'required',
+            // 'stade' => 'required',
+            // 'country' => 'required',
+            // 'zipcode' => 'required',
+        ];
+
+        $messages = [
+            'required' => 'el campo :attribute es obligatorio',
+        ];
+
+        $this->validate($request, $rules, $messages);
+
+        $users = User::find($id);
+
+        $users->name = $request->input('name') !== $users->name ? $request->input('name') : $users->name;
+
+        $users->email = $request->input('email') !== $users->email ? $request->input('email') : $users->email;
+       
+        /* 
+        esto lo comento porque la pass capaz la pass la cambiamos con el auth 
+        $users->password = $request->input('category_id') !== $users->category_id ? $request->input('category_id') : $users->category_id;
+        */
+        
+        $users->avatar = $request->input('avatar') !== $users->avatar ? $request->input('avatar') : $users->avatar;
+       
+        $users->lastname = $request->input('lastname') !== $users->lastname ? $request->input('lastname') : $users->lastname;
+        
+        $users->adress = $request->input('adress') !== $users->adress ? $request->input('adress') : $users->adress;
+
+        $users->location = $request->input('location') !== $users->location ? $request->input('location') : $users->location;
+
+        $users->stade = $request->input('stade') !== $users->stade ? $request->input('stade') : $users->stade;
+
+        $users->country = $request->input('country') !== $users->country ? $request->input('country') : $users->country;
+        
+        $users->zipcode = $request->input('zipcode') !== $users->zipcode ? $request->input('zipcode') : $users->zipcode;
+
+        $users->save();
+        
+        return redirect("/perfilAdm/");
+
     }
 
     /**

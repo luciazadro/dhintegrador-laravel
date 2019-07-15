@@ -20,13 +20,13 @@
                         <td>{{$product->category->name}}</td>
                         <td>{{$product->stock_id}}</td>
                         <td>{{$product->price}}</td>
-
                         <td>
-                        <a href="{{url('products/edit/'.$product->id)}}" class="edit"><i class="fas fa-edit icono"></i></a>
-						<form id='{{$product->id}}' class='form-delete' action="{{url('products/destroy/'.$product->id)}}" method="post">
+                        <a href="{{url('products/'.$product->id.'/update')}}" class="edit  btn btn-primary"><i class="fas fa-edit icono"></i></a>
+						<form id='{{$product->id}}' class='form-delete' action="{{url('products/'.$product->id)}}" method="post">
 							@method('delete')
 							@csrf
-							<a id='delete-link-{{$product->id}}' href="{{url('products/destroy/')}}" class="delete"><i class="fas fa-trash-alt icono"></i></a>
+                            <button type="submit" class="btn btn-danger"value=""><i class="fas fa-trash-alt icono"></i></button>
+
 						</form></td> 
                         </tr> 
                         @endforeach

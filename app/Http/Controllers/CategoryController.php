@@ -74,7 +74,7 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $id)
+    public function edit($id)
     {
        $category = Category::find($id);
        $product = Product::all();
@@ -108,7 +108,7 @@ class CategoryController extends Controller
          
          $category->save();
      
-         return redirect("/categories/".$category->id);
+         return redirect("/categories/");
     }
 
     /**
@@ -119,7 +119,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = Caetegory::find($id);
-        $category->delete();
+        $category = Caetegory::destory($id);
+        return redirect("/categories/");
     }
 }

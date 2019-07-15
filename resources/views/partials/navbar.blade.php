@@ -17,7 +17,7 @@
       </li>
     @if(auth()->user())
       <li class="nav-link">
-        <a class="nav-link" href={{asset("perfil")}}>{{Auth::User()->name}}</a>
+        <a class="nav-link" href="{{url("perfil/")}}">{{Auth::User()->name}}</a>
       </li>
     @endif
     @if(auth()->user() && auth()->user()->role === 9)

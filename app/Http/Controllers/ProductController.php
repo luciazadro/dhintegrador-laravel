@@ -86,6 +86,7 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
+        // dd('hola');
         $category = Category::all();
         $product = Product::find($id);
      
@@ -120,17 +121,20 @@ class ProductController extends Controller
         
         $product = Product::find($id);
         
-         $product->title = $request->input('name') !== $product->title ? $request->input('name') : $product->name;
+         $product->name = $request->input('name') !== $product->name ? $request->input('name') : $product->name;
          
          $product->description = $request->input('description') !== $product->description ? $request->input('description') : $product->description;
          $product->category_id = $request->input('category_id') !== $product->category_id ? $request->input('category_id') : $product->category_id;
          $product->stock_id = $request->input('stock_id') !== $product->stock_id ? $request->input('stock_id') : $product->stock_id;
          $product->price = $request->input('price') !== $product->price ? $request->input('price') : $product->price;
-         $product->picture = $request->input('picture') !== $product->picture ? $request->input('picture') : $product->picture;
-         
+         if($request->input('picture') !== $product->picture){
+             $photopath_product = $request->file('picture')->store('product_img', 'public');
+         }
+         $product->picture = $request->input('picture') !== $product->picture ? $photopath_product : $product->picture;
+  
          $product->save();
      
-         return redirect("/products/".$product->id);
+         return redirect("/products/");
     }
 
     /**
@@ -141,8 +145,8 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {   
-        $product = Product::find($id);
-        $product->delete();
+        $product = Product::destroy($id);
+        return redirect("/perfilAdm/");
     }
     public function search(Request $request)
     {
