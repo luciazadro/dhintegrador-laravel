@@ -1,4 +1,3 @@
-@extends('layouts.master')
 @section('content')
 <div class="carrito-cart col-10">
         <img src="img/Logo_aurora.png" alt="Logo de Aurora Materiales">
