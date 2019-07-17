@@ -1,9 +1,9 @@
 window.onload = function(){
 
-    var quantity = document.getElementById("quantity")
-    var error = document.getElementById("errorQuantity")
-    var subtotal = document.getElementById('subtotal')
-    var total = document.getElementById('total')
+    let quantity = document.getElementById("quantity")
+    let error = document.getElementById("errorQuantity")
+    let subtotal = document.getElementById('subtotal')
+    let total = document.getElementById('total')
 
     if (quantity.value === "" || quantity.value === null)
     {

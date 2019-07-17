@@ -5,6 +5,7 @@
   <div class="profile">
     <form action="{{ route('login') }}" method="POST">
         @csrf
+        <button type="button" data-dismiss="alert"></button>
             <img src="img/Logo_aurora.png" alt="Logo de Aurora Materiales">
             <h1>Login</h1>
             <div class="bar">

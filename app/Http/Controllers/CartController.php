@@ -18,14 +18,6 @@ class CartController extends Controller
 
         $product[$product->id]=$product;
 
-        // $product = [
-        //     'id' => $product->id,
-        //     'name' => $product->name,
-        //     'description'=> $product->description,
-        //     'price' => $product->price,
-        //     'picture'=>$product->picture
-        // ];
-
         session()->push('carrito.products', $product);
 
         $limit = 10;
@@ -38,7 +30,7 @@ class CartController extends Controller
     public function remove($id)
     {
         session()->pull('carrito.products' . $id, "default");
-        return view('carrito');
+        return view('perfil');
 
     }
     
@@ -48,9 +40,12 @@ class CartController extends Controller
         return redirect('products');
     }
 
-    public function checkout($id)
+    public function checkout()
     {
-
+        $user = User::all();
+        $product = Product::all();
+        return view('carrito.checkout')->with('user',$user)
+                                        ->with('product',$product);
     }
 
     /**

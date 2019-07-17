@@ -56,8 +56,8 @@
         </tbody>
     <tfoot>
       <tr>
-        <td><a href="carrito/flush" class="btn btn-warning"><i class="fa fa-angle-left"></i> Vaciar</a></td>
-        <td colspan="2" class="hidden-xs"></td>
+        <td><button type="submit"><a href="carrito/flush" class="btn btn-warning"><i class="fa fa-angle-left"></i> Vaciar</a></button></td>
+        <td colspan="4" class="hidden-sm"></td>
         <td class="hidden-sm text-center">$ {{$total}} </td>
         <td><a href="/carrito/checkout" class="btn btn-success btn-block">Comprar <i class="fa fa-angle-right"></i></a></td>
       </tr>
@@ -70,4 +70,5 @@
   </table>
     </div>
   </div>
+  <script src ="{{asset('js/carrito.js')}}"></script>
 @endsection
