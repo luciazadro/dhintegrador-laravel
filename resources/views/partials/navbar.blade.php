@@ -36,7 +36,7 @@
       </li>
     @else
       <li class="nav-link">
-          <a class="nav-link" href="/login">Ingresar</a>
+          <a id="login" class="nav-link" href="/login">Ingresar</a>
       </li>
     @endif
     @if(!auth()->user())

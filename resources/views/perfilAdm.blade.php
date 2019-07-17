@@ -6,7 +6,7 @@
 <br>
 <br>
 <div class="container2 col-12" >
-    <div class="profileadm col-6">
+    <div class="profile col-4">
         <div>
             <img width="40px" style="border-radius:50%" src="{{asset('storage/avatars/'.Auth::user()->avatar)}}" alt="">
         </div>
@@ -29,24 +29,13 @@
                 <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
             </div>
     </div>
-    <div class='profileadm col-6'>
+    <div class='profile col-4'>
             <img src="img/Logo_aurora.png" alt="Logo de Aurora Materiales">
             <h1>Productos</h1>
             <div class="bar">
                 <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
             </div>
             <button type="button"class="btn btn-danger"><a href="{{route('products.create')}}">Nuevo Producto</a></button>
-    </div>
-    <div class='profileadm col-6'>
-            <img src="img/Logo_aurora.png" alt="Logo de Aurora Materiales">
-            <h1>Categorias</h1>
-            <div class="bar">
-                <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
-            </div>
-            {{-- <button type="button"class="btn btn-danger"><a href="{{route('categories.create')}}"> Nueva Categoria</a></button>
-            <br>
-            <br>
-            <button type="button"class="btn btn-danger"><a href="{{route('categories.edit')}}"> Editar Categoria</a></button> --}}
     </div>
     <div class='carrito col-10'>
             <img src="img/Logo_aurora.png" alt="Logo de Aurora Materiales">

@@ -62,6 +62,7 @@
         <div class="form-group">
             {{-- <a href="{{url('products/edit/'.$product->id)}}"" class="btn btn-info btn-md">Volver</a> --}}
             <input type="submit" class="btn btn-primary" value="Editar Producto" id="editProduct">
+            <a href="{{url('perfilAdm')}}"><button type="button" class="btn btn-info"><-Volver</button></a>
         </div>
     </form>
 </div>

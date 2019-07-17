@@ -40,9 +40,12 @@ class CartController extends Controller
         return redirect('products');
     }
 
-    public function checkout($id)
+    public function checkout()
     {
-
+        $user = User::all();
+        $product = Product::all();
+        return view('carrito.checkout')->with('user',$user)
+                                        ->with('product',$product);
     }
 
     /**

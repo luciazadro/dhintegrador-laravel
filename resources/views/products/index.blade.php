@@ -1,23 +1,21 @@
 @extends('layouts.master')
 @section('content')
-<div class='container2' col-12>
-<article class="carrito col-10">
-        <img src={{asset("img/Logo_aurora.png")}} alt="Logo de Aurora Materiales">
+<div class='container-fluid'>
+<article class="container-fluid carrito ">
+        <img src="{{asset("img/Logo_aurora.png")}}" alt="Logo de Aurora Materiales">
         <div class="bar">
             <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
         </div>
-        <article class="profileadm col-12">
-        <section class="row">
+        <article >
+        <section class='row'>
             @foreach($products as $product)
-            <article class="block col" >
+            <article class="block col-2" >
                 <section class="top">
                     <ul>
-                        <li><a href="#"><i class="favorite"></i></a></li>
-                        <li><span class="title_product">{{$product->name}}</span></li>
-                        <li><a href="#"><i class="" aria-hidden="true"></i>
+                        <li><span class="title_product">{{$product->name}}  </span></li>
                     </ul>
                 </section>
-                <section class="middle" col-12>
+                <section class="middle">
                     <img src="{{asset('storage/'.$product->picture)}}" alt="" />
                 </section>
                 <section class="bottom2">
@@ -28,17 +26,6 @@
                 <section>
                     <a href="{{url('carrito/add/'.$product->id)}}" class="btn btn-info"><i class="material-icons">&#xE147;</i></a>
                 </section>
-                @if(auth()->user() && auth()->user()->role === 9)
-                <section>
-                    <a href="{{url('products/'.$product->id.'/update')}}" class="btn btn-warning"><i class="material-icons">edit</i></a>
-                </section>
-                <section>
-                <form id='{{$product->id}}' class='form-delete' action="{{url('products/'.$product->id)}}" method="post">
-                @method('delete')
-                @csrf
-                <button type="submit" class="btn btn-danger"value=""><i class="material-icons">delete</i></button>
-                </section>
-                @endif
             </article>
             @endforeach
         </section>

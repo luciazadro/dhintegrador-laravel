@@ -25,12 +25,12 @@
                 <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
             </div>
                 <h2> {{Auth::user()->email}}  </h2>
-            {{-- <button type="button" class="btn btn-danger"><a href="{{('users/show/'.$user->id)}}"></a> --}}
+            <!-- {{-- <button type="button" class="btn btn-danger"><a href="{{('users/show/'.$user->id)}}"></a> --}} -->
             <div class="bar">
                 <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
             </div>
     </div>
-    {{-- <div class='profile col-2'>
+    <!-- {{-- <div class='profile col-2'>
     <img src="img/Logo_aurora.png" alt="Logo de Aurora Materiales">
             <h1>Actualiza tus Datos de Registracion</h1>
         <div class="bar">
@@ -45,9 +45,9 @@
                 <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
                 </div>
                 {{-- <button type="button"> <a href="{{route('users.edit2')}}" class="btn btn-danger">Ingresar </a></button> --}}
-    </div> --}}
-    <div class="carrito col-12">
-        @include('carrito')
+    </div> --}} -->
+    <div class="carrito col-10">
+        @include('carritocomponente')
     </div>
 </div>
 </body>

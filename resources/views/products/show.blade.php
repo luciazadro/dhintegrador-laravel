@@ -19,14 +19,13 @@
                         <td>{{$product->description}}</td>
                         <td>{{$product->category->name}}</td>
                         <td>{{$product->stock_id}}</td>
-                        <td>{{$product->price}}</td>
-                        <td>
-                        <a href="{{url('products/'.$product->id.'/update')}}" class="edit  btn btn-primary"><i class="fas fa-edit icono"></i></a>
-						<form id='{{$product->id}}' class='form-delete' action="{{url('products/'.$product->id)}}" method="post">
-							@method('delete')
+                        <td>$ {{$product->price}}</td>
+                        <td><a href="{{url('products/'.$product->id.'/update')}}" class="btn btn-primary icono align-middle"><i class="fas fa-edit icono"></i></a>
+						<td>
+                            <form id='{{$product->id}}' class='form-delete' action="{{url('products/'.$product->id)}}" method="post">
+							@method('DELETE')
 							@csrf
-                            <button type="submit" class="btn btn-danger"value=""><i class="fas fa-trash-alt icono"></i></button>
-
+                            <button type="submit" class="btn btn-danger"value=""><i class="fas fa-trash-alt icono align-middle"></i></button>
 						</form></td> 
                         </tr> 
                         @endforeach

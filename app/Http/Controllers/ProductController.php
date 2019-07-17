@@ -15,7 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-       $limit=10;
+       $limit=30;
        $product = Product::make()->paginate($limit);
        $category = Category::all();
        return view('products.index')->with('products', $product)
@@ -63,7 +63,7 @@ class ProductController extends Controller
  
         $product->save();
  
-        return redirect('/products');
+        return redirect('/perfilAdm');
     }
 
     /**
@@ -134,7 +134,7 @@ class ProductController extends Controller
   
          $product->save();
      
-         return redirect("/products/");
+         return redirect("/perfilAdm/");
     }
 
     /**
@@ -145,7 +145,8 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {   
-        $product = Product::destroy($id);
+        $product = Product::find($id);
+        $product->delete();
         return redirect("/perfilAdm/");
     }
     public function search(Request $request)

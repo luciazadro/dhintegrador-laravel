@@ -1,13 +1,12 @@
-@extends('layouts.master')
 @section('content')
-<div class="carrito col-10">
+<div class="carrito-cart col-10">
         <img src="img/Logo_aurora.png" alt="Logo de Aurora Materiales">
         <div class="bar">
             <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
         </div>
     <h2>Carrito de Compras</h2>
-    <div>
-        <table class="table table-hover table-condensed">
+    <div class="caja">
+        <table class="blanco table table-hover table-condensed">
             <thead>
                 <tr>
                     <th style="width:5%">Foto</th>
@@ -57,13 +56,13 @@
     <tfoot>
       <tr>
         <td><button type="submit"><a href="carrito/flush" class="btn btn-warning"><i class="fa fa-angle-left"></i> Vaciar</a></button></td>
-        <td colspan="4" class="hidden-sm"></td>
+        <td colspan="2" class="hidden-xs"></td>
         <td class="hidden-sm text-center">$ {{$total}} </td>
         <td><a href="/carrito/checkout" class="btn btn-success btn-block">Comprar <i class="fa fa-angle-right"></i></a></td>
       </tr>
       @else
         <div class="alert alert-danger" role="alert">
-            Aun el carrito esta Vacio<a href="/products">!</a>!
+            ¡El carrito está Vacío! <a href="/products"> Agregar productos</a>
         </div>
       @endif
     </tfoot>

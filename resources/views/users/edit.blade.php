@@ -64,4 +64,6 @@
             <span class="one"></span><span class="two"></span><span class="three"></span><span class="four"></span><span class="five"></span>
     </div>
     <button type="submit" class="btn btn-danger"> Actualizar </button>
+    <a href="{{url('perfilAdm')}}"><button type="button" class="btn btn-primary"><-Volver</button></a>
     </form>
+
